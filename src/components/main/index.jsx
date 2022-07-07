@@ -1,5 +1,8 @@
-export const Main=()=>{
-    return (
-        <main></main>
-    )
-}
+import { StyledMain } from "./style";
+export const Main = () => {
+  return (
+    <StyledMain>
+      
+    </StyledMain>
+  );
+};

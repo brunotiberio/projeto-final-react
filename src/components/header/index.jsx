@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { NavButtons } from "../navbar";
 import { StyledHeader } from "./style";
 import TemporaryDrawer from "../drawer";
+import SearchDrawer from "../searchDrawer";
 
 export const Header = () => {
   const [mQuery, setMQuery] = useState({
@@ -26,7 +27,7 @@ export const Header = () => {
         <>
           <TemporaryDrawer />
           <h1>logo</h1>
-          <SearchIcon sx={{height:36, width:64,}} />
+          <SearchDrawer/>
         </>
       ) : (
         <>
