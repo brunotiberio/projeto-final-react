@@ -1,3 +1,4 @@
+import { DeleteModal } from "./components/deleteModal";
 import { Header } from "./components/header";
 import { StyledGlobal } from "./style";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <StyledGlobal />
       <Header />
+      <DeleteModal/>
     </>
   );
 }
