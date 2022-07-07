@@ -2,8 +2,11 @@ import { useForm, useInput } from "lx-react-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import "./styles.css";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 function Login() {
+  const { userLogin } = useContext(UserContext);
   const email = useInput({ name: "email", validation: "email" });
   const password = useInput({
     name: "password",
@@ -15,8 +18,10 @@ function Login() {
     formFields: [email, password],
     submitCallback: (formData) => {
       console.log(formData);
+      userLogin(formData);
     },
   });
+
   return (
     <div>
       <h2>Área de Login</h2>
