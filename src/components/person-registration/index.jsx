@@ -1,4 +1,11 @@
 import { useForm, useInput } from "lx-react-form";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import "./styles.css";
 
 function PersonRegistration() {
   const name = useInput({
@@ -37,31 +44,50 @@ function PersonRegistration() {
     <div>
       <h2>Cadastro</h2>
       <h3>Leitor/Jornalista</h3>
-      <form onSubmit={form.handleSubmit}>
-        <label>Nome</label>
-        <input type="text" {...name.inputProps} />
-        {name.error && <p>{name.error}</p>}
+      <form className="form" onSubmit={form.handleSubmit}>
+        <TextField
+          type="text"
+          label="Nome"
+          error={name.error && true}
+          helperText={name.error}
+          {...name.inputProps}
+        />
 
-        <label>Email</label>
-        <input type="email" {...email.inputProps} />
-        {email.error && <p>{email.error}</p>}
+        <TextField
+          type="email"
+          label="Email"
+          error={email.error && true}
+          helperText={email.error}
+          {...email.inputProps}
+        />
 
-        <label>Senha</label>
-        <input type="password" {...password.inputProps} />
-        {password.error && <p>{password.error}</p>}
+        <TextField
+          type="password"
+          label="Senha"
+          error={password.error && true}
+          helperText={password.error}
+          {...password.inputProps}
+        />
 
-        <label>Confirmar Senha</label>
-        <input type="password" {...confirmPassword.inputProps} />
-        {confirmPassword.error && <p>{confirmPassword.error}</p>}
+        <TextField
+          type="password"
+          label="Confirmar Senha"
+          error={confirmPassword.error && true}
+          helperText={confirmPassword.error}
+          {...confirmPassword.inputProps}
+        />
 
-        <label>Qual seu interesse no site?</label>
-        <select {...type.inputProps}>
-          <option value="none">Selecione a opção</option>
-          <option value="leitor">Sou um Leitor</option>
-          <option value="jornalista">Sou um Jornalista/Colunista</option>
-        </select>
+        <FormControl fullWidth>
+          <InputLabel>Qual seu interesse no site?</InputLabel>
+          <Select label="Qual seu interesse no site?" {...type.inputProps}>
+            <MenuItem value="leitor">Sou um Leitor</MenuItem>
+            <MenuItem value="jornalista">Sou um Jornalista/Colunista</MenuItem>
+          </Select>
+        </FormControl>
 
-        <button type="submit">Cadastrar</button>
+        <Button variant="contained" size="small" type="submit">
+          Cadastrar
+        </Button>
       </form>
     </div>
   );

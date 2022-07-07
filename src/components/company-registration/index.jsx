@@ -1,4 +1,7 @@
 import { useForm, useInput } from "lx-react-form";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import "./styles.css";
 
 function CompanyRegistration() {
   const name = useInput({
@@ -59,28 +62,50 @@ function CompanyRegistration() {
     <div>
       <h2>Cadastro</h2>
       <h3>Empresa Parceira</h3>
-      <form onSubmit={form.handleSubmit}>
-        <label>Nome da Empresa</label>
-        <input type="text" {...name.inputProps} />
-        {name.error && <p>{name.error}</p>}
+      <form className="form" onSubmit={form.handleSubmit}>
+        <TextField
+          type="text"
+          label="Nome da Empresa"
+          error={name.error && true}
+          helperText={name.error}
+          {...name.inputProps}
+        />
 
-        <label>CNPJ</label>
-        <input type="text" {...cnpj.inputProps} />
-        {cnpj.error && <p>{cnpj.error}</p>}
+        <TextField
+          type="text"
+          label="CNPJ"
+          error={cnpj.error && true}
+          helperText={cnpj.error}
+          {...cnpj.inputProps}
+        />
 
-        <label>Email</label>
-        <input type="email" {...email.inputProps} />
-        {email.error && <p>{email.error}</p>}
+        <TextField
+          type="email"
+          label="Email"
+          error={email.error && true}
+          helperText={email.error}
+          {...email.inputProps}
+        />
 
-        <label>Senha</label>
-        <input type="password" {...password.inputProps} />
-        {password.error && <p>{password.error}</p>}
+        <TextField
+          type="password"
+          label="Senha"
+          error={password.error && true}
+          helperText={password.error}
+          {...password.inputProps}
+        />
 
-        <label>Confirmar Senha</label>
-        <input type="password" {...confirmPassword.inputProps} />
-        {confirmPassword.error && <p>{confirmPassword.error}</p>}
+        <TextField
+          type="password"
+          label="Confirmar Senha"
+          error={confirmPassword.error && true}
+          helperText={confirmPassword.error}
+          {...confirmPassword.inputProps}
+        />
 
-        <button type="submit">Cadastrar</button>
+        <Button variant="contained" size="small" type="submit">
+          Cadastrar
+        </Button>
       </form>
     </div>
   );

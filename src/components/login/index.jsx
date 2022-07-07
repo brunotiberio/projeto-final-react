@@ -1,4 +1,7 @@
 import { useForm, useInput } from "lx-react-form";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import "./styles.css";
 
 function Login() {
   const email = useInput({ name: "email", validation: "email" });
@@ -17,15 +20,25 @@ function Login() {
   return (
     <div>
       <h2>Área de Login</h2>
-      <form onSubmit={form.handleSubmit}>
-        <label>Email</label>
-        <input type="email" {...email.inputProps} />
-        {email.error && <p>{email.error}</p>}
-        <label>Senha</label>
-        <input type="password" {...password.inputProps} />
-        {password.error && <p>{password.error}</p>}
+      <form className="form" onSubmit={form.handleSubmit}>
+        <TextField
+          type="email"
+          error={email.error && true}
+          label="Email"
+          helperText={email.error}
+          {...email.inputProps}
+        />
+        <TextField
+          type="password"
+          error={password.error && true}
+          label="Senha"
+          helperText={password.error}
+          {...password.inputProps}
+        />
 
-        <button type="submit">Logar</button>
+        <Button variant="contained" size="small" type="submit">
+          Logar
+        </Button>
       </form>
     </div>
   );
