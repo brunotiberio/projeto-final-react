@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-
 export const StyledGlobal = createGlobalStyle`
     *{
         margin: 0;
@@ -15,4 +14,8 @@ export const StyledGlobal = createGlobalStyle`
             }
         }
     }
+
+html {
+    font-size:62.5%;
+}
 `
