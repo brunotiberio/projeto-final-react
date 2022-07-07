@@ -1,16 +1,14 @@
-import { DeleteModal } from "./components/deleteModal";
 import { Header } from "./components/header";
-import { StyledMain } from "./components/main/style";
+import { Main } from "./components/main";
 import { StyledGlobal } from "./style";
 
 function App() {
   return (
     <>
-      <StyledGlobal />
-      <Header />
-      <DeleteModal/>
-      <StyledMain>        
-      </StyledMain>
+    <StyledGlobal/>
+        <Header />
+      <Main>
+      </Main>
     </>
   );
 }
