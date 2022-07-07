@@ -2,8 +2,9 @@ import { StyledGlobal } from './style';
 
 function App() {
   return (
-    <StyledGlobal />
-
+    <>
+      <StyledGlobal />
+    </>
   );
 }
 
