@@ -48,6 +48,7 @@ function Login() {
           Logar
         </Button>
       </form>
+      <p>Não possui uma conta? Clique aqui e faça o registro.</p>
     </div>
   );
 }

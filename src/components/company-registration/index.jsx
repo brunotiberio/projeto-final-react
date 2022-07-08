@@ -113,6 +113,7 @@ function CompanyRegistration() {
           Cadastrar
         </Button>
       </form>
+      <p>Já possui uma conta? Clique aqui e faça login.</p>
     </div>
   );
 }
