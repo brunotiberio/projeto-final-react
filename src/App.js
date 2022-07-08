@@ -1,3 +1,4 @@
+import CreateNews from "./components/createNews";
 import { Header } from "./components/header";
 import { Main } from "./components/main";
 
@@ -9,6 +10,7 @@ function App() {
       <StyledGlobal />
       <Header />
       <Main>
+        <CreateNews />
       </Main>
     </>
   );
