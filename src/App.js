@@ -1,3 +1,4 @@
+import CreatorCompanyEdit from "./components/creatorCompanyEdit";
 import { Header } from "./components/header";
 import { Main } from "./components/main";
 import Paths from "./routes";
@@ -9,7 +10,7 @@ function App() {
       <StyledGlobal />
       <Header />
       <Main>
-        <Paths />
+      <Paths />
       </Main>
     </>
   );
