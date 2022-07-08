@@ -1,6 +1,6 @@
 import { Header } from "./components/header";
 import { Main } from "./components/main";
-import UserEdit from "./components/userEdit";
+import CompanyRegisterPage from "./pages/company -register";
 import { StyledGlobal } from "./style";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <StyledGlobal />
       <Header />
       <Main>
-        <UserEdit/>
+        <CompanyRegisterPage />
       </Main>
     </>
   );
