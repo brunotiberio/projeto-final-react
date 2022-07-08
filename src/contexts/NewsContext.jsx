@@ -17,13 +17,16 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function getOneNewsById(id) {
+  async function getOneNewsById() {
     try {
-      const response = await api.get(`/articles/${id}`);
+      const response = await api.get(`/articles/1`);
 
       setArticle(response.data);
+
     } catch (error) {
+
       console.log(error);
+      
     }
   }
 

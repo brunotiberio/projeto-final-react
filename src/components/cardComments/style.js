@@ -8,7 +8,7 @@ export const Container = styled.ul`
 
     width: 95%;
 
-    margin: 0 auto;
+    margin: 10px auto;
 `
 
 export const CommentCard = styled.li`

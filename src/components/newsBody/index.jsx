@@ -3,46 +3,54 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
+import { PostComments } from "../postComments";
+import { CardComments } from "../cardComments";
 
-export function NewsBody({ title, url, imageDescription, content, rating }){
+export function NewsBody({ article }) {
   const [value, setValue] = React.useState(2);
   return (
-    <StyledArticle>
-      <Content>
-        <h2>{title}</h2>
+    <>
+      {article && (
+        <StyledArticle>
+          <Content>
+            <h2>{article.title}</h2>
 
-        <figure>
-          <img
-            style={{ width: "100px", heigth: "100px" }}
-            src={url}
-            alt={imageDescription}
-          />
-          <figcaption>{imageDescription}</figcaption>
-        </figure>
-      </Content>
+            <figure>
+              <img
+                style={{ width: "200px", heigth: "200px" }}
+                src={article.urlToImage}
+                alt={article.title}
+              />
+              <figcaption>{article.description}</figcaption>
+            </figure>
+          </Content>
 
-      <section>
-        {content}
-        <Box
-          sx={{
-            "& > legend": { mt: 2 },
-          }}
-        >
-          <Typography component="legend">Nota</Typography>
-          <Rating
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
+          <section>{article.content}</section>
+
+          <AuthContent>
+            <span>Redigido por {article.source.author}</span>
+          </AuthContent>
+
+          <Box
+            sx={{
+              "& > legend": { mt: 2 },
             }}
-          />
-        </Box>
-      </section>
+          >
+            <Typography component="legend">Nota</Typography>
+            <Rating
+              name="simple-controlled"
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            />
+          </Box>
 
-      <AuthContent>
-        <span>(Nome do Autor)</span>
-      </AuthContent>
+          <PostComments/>
 
-    </StyledArticle>
+          <CardComments/>
+        </StyledArticle>
+      )}
+    </>
   );
-};
+}

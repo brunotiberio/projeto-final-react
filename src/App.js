@@ -11,7 +11,6 @@ function App() {
 
       <Header />
       <Main>
-        <SingleArticlePage/>
         <Paths />
       </Main>
     </>

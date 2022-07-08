@@ -23,11 +23,9 @@ export const StyledArticle = styled.div`
 
         margin: 0 auto;
         padding: 0 .7rem;
-        
-        height: 30%;
-        width: 95%;
 
         overflow-y: auto;
+
     }
 `
 

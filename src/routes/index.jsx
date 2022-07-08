@@ -4,6 +4,7 @@ import CompanyRegisterPage from "../pages/company -register";
 import { Homepage } from "../pages/homepage";
 import PersonRegisterPage from "../pages/person-register";
 import RegisterPage from "../pages/register";
+import { SingleArticlePage } from "../pages/singleArticlePage";
 
 function Paths() {
   return (
@@ -18,7 +19,7 @@ function Paths() {
         element={<CompanyRegisterPage />}
       />
       <Route exact path={"/mynews/edit"} />
-      <Route exact path={"/news/:id"} />
+      <Route exact path={"/news/:1"}  element={<SingleArticlePage/>}/>
       <Route exact path={"/profile"} />
       <Route exact path={"/mynews/create"} />
     </Routes>
