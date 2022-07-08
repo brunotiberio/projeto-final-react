@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from "react";
 import { CardNewsOverview } from "../../components/cardNewOverview";
 import { NewsContext } from "../../contexts/NewsContext";
