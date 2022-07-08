@@ -7,8 +7,7 @@ function App() {
     <>
       <StyledGlobal />
       <Header />
-      <Main>
-      </Main>
+      <Main></Main>
     </>
   );
 }
