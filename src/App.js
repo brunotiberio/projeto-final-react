@@ -1,6 +1,5 @@
 import { Header } from "./components/header";
 import { Main } from "./components/main";
-
 import { StyledGlobal } from "./style";
 
 function App() {
@@ -8,8 +7,7 @@ function App() {
     <>
       <StyledGlobal />
       <Header />
-      <Main>
-      </Main>
+      <Main></Main>
     </>
   );
 }
