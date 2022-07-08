@@ -1,13 +1,16 @@
 import { Header } from "./components/header";
 import { Main } from "./components/main";
+import { Homepage } from "./pages/homepage";
 import { StyledGlobal } from "./style";
 
 function App() {
   return (
     <>
       <StyledGlobal />
-      <Header />
-      <Main></Main>
+        <Header />
+      <Main>
+        <Homepage/>
+      </Main>
     </>
   );
 }
