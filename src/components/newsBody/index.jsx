@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 
-export const NewsBody = ({ title, url, imageDescription, content, rating }) => {
+export function NewsBody({ title, url, imageDescription, content, rating }){
   const [value, setValue] = React.useState(2);
   return (
     <StyledArticle>

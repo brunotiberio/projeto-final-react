@@ -1,7 +1,7 @@
 import { BoxArea, Content } from "./script";
 import Add from "@mui/icons-material/Add";
 
-export const PostComments = () => {
+export function PostComments () {
   //pegar os comments com context
 
   return (
