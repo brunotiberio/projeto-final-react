@@ -1,11 +1,9 @@
-
-import { CardNewsOverview } from "../cardNewOverview";
 import { StyledMain } from "./style";
 
-export const Main = () => {
+export const Main = ({children}) => {
   return (
     <StyledMain>
-      <CardNewsOverview/>
+      {children}
     </StyledMain>
   );
 };
