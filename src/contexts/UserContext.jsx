@@ -26,6 +26,15 @@ export const UserProvider = ({ children }) => {
     }
   }
 
+  async function userEdit(formData){
+    try {
+      const response = await api.post("/users/:id", formData);
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <UserContext.Provider value={{ userLogin, userCreate }}>
       {children}
