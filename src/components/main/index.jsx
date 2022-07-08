@@ -1,10 +1,11 @@
-import { CardComments } from "../cardComments";
+
+import { CardNewsOverview } from "../cardNewOverview";
 import { StyledMain } from "./style";
 
 export const Main = () => {
   return (
     <StyledMain>
-      <CardComments/>
+      <CardNewsOverview/>
     </StyledMain>
   );
 };
