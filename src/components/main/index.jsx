@@ -1,10 +1,9 @@
-import { CardComments } from "../cardComments";
 import { StyledMain } from "./style";
 
-export const Main = () => {
+export const Main = ({children}) => {
   return (
     <StyledMain>
-      <CardComments/>
+      {children}
     </StyledMain>
   );
 };

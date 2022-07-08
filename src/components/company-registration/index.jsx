@@ -1,12 +1,17 @@
 import { useForm, useInput } from "lx-react-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import "./styles.css";
 
 function CompanyRegistration() {
+  const { userCreate } = useContext(UserContext);
+
   const name = useInput({
     name: "name",
   });
+
   const cnpj = useInput({
     name: "cnpj",
     customMask: {
@@ -55,6 +60,7 @@ function CompanyRegistration() {
     formFields: [name, cnpj, email, password, confirmPassword],
     submitCallback: (formData) => {
       console.log(formData);
+      userCreate(formData);
     },
   });
 

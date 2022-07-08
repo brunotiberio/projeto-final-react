@@ -13,12 +13,21 @@ export const UserProvider = ({ children }) => {
         JSON.stringify(response.data.accessToken)
       );
     } catch (error) {
-    } finally {
+      console.log(error);
+    }
+  }
+
+  async function userCreate(formData) {
+    try {
+      const response = await api.post("/register", formData);
+      // console.log(response);
+    } catch (error) {
+      console.log(error);
     }
   }
 
   return (
-    <UserContext.Provider value={{ userLogin }}>
+    <UserContext.Provider value={{ userLogin, userCreate }}>
       {children}
     </UserContext.Provider>
   );

@@ -5,9 +5,13 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import "./styles.css";
 
 function PersonRegistration() {
+  const { userCreate } = useContext(UserContext);
+
   const name = useInput({
     name: "name",
   });
@@ -37,6 +41,7 @@ function PersonRegistration() {
     formFields: [name, email, password, confirmPassword, type],
     submitCallback: (formData) => {
       console.log(formData);
+      userCreate(formData);
     },
   });
 
