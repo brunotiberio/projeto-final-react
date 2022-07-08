@@ -1,12 +1,19 @@
 import { useContext, useEffect } from "react";
+import { NewsBody } from "../../components/newsBody";
+
 import { NewsContext } from "../../contexts/NewsContext";
 
-export function SingleArticlePage({ id }) {
-  const { getOneNewsById } = useContext(NewsContext);
+export function SingleArticlePage() {
+
+  const { getOneNewsById, article } = useContext(NewsContext);
 
   useEffect(() => {
-    getOneNewsById(1);
+    getOneNewsById();
   }, []);
 
-  return <h1>Ola</h1>;
+  return(
+    <>
+      <NewsBody article={article} />
+    </>
+  );
 }
