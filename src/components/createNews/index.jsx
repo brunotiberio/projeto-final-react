@@ -1,12 +1,12 @@
 import React from 'react'
 import { useForm, useSelect, useInput } from "lx-react-form";
 
-
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 
 import { FormContainer } from './style'
 
 export default function CreateNews() {
+
 
     const title = useInput({
         name: 'title'
@@ -35,6 +35,7 @@ export default function CreateNews() {
             console.log(formData)
         }
     })
+
 
   return (
     <>
