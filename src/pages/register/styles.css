@@ -1,0 +1,25 @@
+.temp--cont--reg {
+  display: flex;
+  flex-direction: column;
+}
+
+.temp--cont--int {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.img--invertida {
+  transform: scaleX(-1);
+  height: 150px;
+}
+
+.img--n--invertida {
+  height: 150px;
+}
+
+.temp--cont--opt {
+  display: flex;
+  flex-direction: row;
+}

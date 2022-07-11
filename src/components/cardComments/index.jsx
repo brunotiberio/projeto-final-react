@@ -1,7 +1,7 @@
 import { CommentCard, Container, Content, UserInfo } from "./style"
 
 
-export const CardComments = ({userImg, username, content}) =>{
+export function CardComments({userImg, username, content}){
 
     return(
         <Container>

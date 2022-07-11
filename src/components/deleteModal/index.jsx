@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export const DeleteModal = () => {
+export function DeleteModal() {
   const [open, setOpen] = useState(false);
 
   const handleModal = () => {
@@ -66,4 +66,4 @@ export const DeleteModal = () => {
       </Dialog>
     </div>
   );
-};
+}
