@@ -5,9 +5,16 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { PostComments } from "../postComments";
 import { CardComments } from "../cardComments";
+import { NewsContext } from "../../contexts/NewsContext";
 
 export function NewsBody({ article }) {
   const [value, setValue] = React.useState(2);
+  const { getComments, comments } = React.useContext(NewsContext);
+
+  React.useEffect(() => {
+    getComments();
+  }, []);
+
   return (
     <>
       {article && (
@@ -46,9 +53,10 @@ export function NewsBody({ article }) {
             />
           </Box>
 
-          <PostComments/>
+          <PostComments />
 
-          <CardComments/>
+          {comments && comments.map((comment) => <CardComments comment={comment} />)}
+          
         </StyledArticle>
       )}
     </>
