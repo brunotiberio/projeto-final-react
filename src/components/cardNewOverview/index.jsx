@@ -5,19 +5,27 @@ import {
   ContentInfo,
   ContentUser,
 } from "./style";
+import {useNavigate } from "react-router-dom";
 
 export function CardNewsOverview({ article }) {
+
+  const navigate = useNavigate()
 
   //função para dar reticencias para a descrição caso seja muito grande
   function resumeDescription(content) {
     if (content.split("").length > 50) {
-      return content.split(" ").splice(0, 13).join(" ") + "...";
+      return content.split(" ").splice(0, 15).join(" ") + "...";
     }
     return content;
   }
 
+  function handleNavigation(){
+    navigate(`/news/1`)
+  }
+
   return (
-    <Container>
+    <Container onClick={handleNavigation}>
+
       <ContentImg>
         <figure>
           <img src={article.urlToImage} alt={article.title} />
@@ -31,7 +39,7 @@ export function CardNewsOverview({ article }) {
             : article.description}
         </p>
         <ContentInfo>
-          <button>{article.source.category}</button>
+          <div>{article.source.category}</div>
           <span>{article.publishedAt}</span>
         </ContentInfo>
       </Content>

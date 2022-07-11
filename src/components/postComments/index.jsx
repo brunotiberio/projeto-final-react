@@ -4,13 +4,16 @@ import { useForm, useInput } from "lx-react-form";
 import { TextField } from "@mui/material";
 import { useContext } from "react";
 import { NewsContext } from "../../contexts/NewsContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export function PostComments() {
+  const { article, createComment } = useContext(NewsContext);
 
-  const {createComment} = useContext(NewsContext)
+  const { user } = useContext(UserContext);
 
-  //pegar o id do User pelo context
+  const userId = user?.id;
 
+  const articleId = article.id;
 
   const content = useInput({
     content: "content",
@@ -20,7 +23,7 @@ export function PostComments() {
     clearFields: true,
     formFields: [content],
     submitCallback: (body) => {
-      createComment(body.undefined);
+      createComment(body.undefined, userId, articleId);
     },
   });
 
