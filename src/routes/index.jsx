@@ -16,11 +16,7 @@ function Paths() {
       <Route exact path={"/login"} element={<Login />} />
       <Route exact path={"/register"} element={<RegisterPage />} />
       <Route exact path={"/register/person"} element={<PersonRegisterPage />} />
-      <Route
-        exact
-        path={"/register/enterprise"}
-        element={<CompanyRegisterPage />}
-      />
+      <Route exact path={"/register/enterprise"} element={<CompanyRegisterPage />} />
       <Route exact path={"/mynews/edit"} element={<EditNews />} />
       <Route exact path={"/news/:1"} element={<SingleArticlePage />} />
       <Route exact path={"/profile"} element={<JournalistProfilePage />} />
