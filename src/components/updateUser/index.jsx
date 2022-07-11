@@ -1,14 +1,14 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 
 import { useForm, useInput } from "lx-react-form";
-import { flexbox } from "@mui/system";
 
-export function UpdateUser({type}) {
+
+export function UpdateUser(type) {
   const tel = useInput({
     name: "tel",
   });
@@ -41,7 +41,7 @@ export function UpdateUser({type}) {
     clearFields: true,
     formFields: [tel, cep, rua, numero, bairro, cidade, state],
     submitCallback: (formData) => {
-      if(type=="company"){
+      if(type==="company"){
         console.log("tornar uma empresa",formData);
       }else{
         console.log("tornar um jornalista",formData);
@@ -51,7 +51,7 @@ export function UpdateUser({type}) {
 
   return (
     <form onSubmit={form.handleSubmit}>
-        {type==="company" ? (<h2>Se torne uma Empresa</h2>):(<h2>Se torne um Jornalista</h2>)}
+        {type==="content creator" ? (<h2>Se torne uma Empresa</h2>):(<h2>Se torne um Jornalista</h2>)}
       <TextField
         id="standard-basic"
         label="Telefone para contato"
@@ -111,10 +111,11 @@ const style = {
   p: 4,
 };
 
-export function BasicModal({type}) {
+export function BasicModal(type) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+ console.log(type)
   return (
     <div>
       <Button onClick={handleOpen}>Open modal</Button>
