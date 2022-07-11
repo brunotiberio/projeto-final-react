@@ -19,7 +19,7 @@ import SearchDrawer from "../searchDrawer";
 
 export const Header = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
+  
   const navigate = useNavigate();
 
   function login() {

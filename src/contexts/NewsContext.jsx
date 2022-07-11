@@ -18,9 +18,10 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function getOneNewsById() {
+  async function getOneNewsById(id) {
+    console.log(id);
     try {
-      const response = await api.get(`/articles/1`);
+      const response = await api.get(`/articles/${id}`);
 
       setArticle(response.data);
     } catch (error) {
@@ -30,7 +31,7 @@ export const NewsProvider = ({ children }) => {
 
   async function getComments() {
     try {
-      const response = await api.get(`/articles/1?_embed=comments`);
+      const response = await api.get(`/articles/3?_embed=comments`);
 
       setComments(response.data.comments);
     } catch (error) {

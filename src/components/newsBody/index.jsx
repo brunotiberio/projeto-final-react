@@ -17,11 +17,13 @@ import { CardComments } from "../cardComments";
 import { NewsContext } from "../../contexts/NewsContext";
 
 export function NewsBody({ article }) {
+
   const [value, setValue] = React.useState(2);
+
   const { getComments, comments } = React.useContext(NewsContext);
 
   React.useEffect(() => {
-    getComments();
+    getComments(article?.id);
   }, [comments]);
 
   return (

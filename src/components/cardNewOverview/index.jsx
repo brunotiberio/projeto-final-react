@@ -6,8 +6,13 @@ import {
   ContentUser,
 } from "./style";
 import {useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { NewsContext } from "../../contexts/NewsContext";
 
 export function CardNewsOverview({ article }) {
+
+  const {getOneNewsById} = useContext(NewsContext)
+
 
   const navigate = useNavigate()
 
@@ -20,11 +25,14 @@ export function CardNewsOverview({ article }) {
   }
 
   function handleNavigation(){
-    navigate(`/news/1`)
+    navigate(`/news/${article.id}`)
   }
 
   return (
-    <Container onClick={handleNavigation}>
+    <Container onClick={() =>{
+      handleNavigation()
+      getOneNewsById(article.id)
+      }}>
 
       <ContentImg>
         <figure>
