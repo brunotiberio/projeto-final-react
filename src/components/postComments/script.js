@@ -12,23 +12,18 @@ export const Content = styled.div`
   }
 `;
 
-export const BoxArea = styled.div`
+export const BoxArea = styled.form`
   display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
   border-radius: 10px;
 
+  width: 60%;
+
   background-color: white;
-
-  textarea {
-    border-radius: 10px;
-
-    width: 90%;
-    height: 7rem;
-
-    padding: 1rem;
-
-    border: none;
-    outline: none;
-  }
 
   div {
     display: flex;
@@ -44,6 +39,7 @@ export const BoxArea = styled.div`
       border: none;
       border-radius: 100%;
 
+      margin-right: 7px;
       margin-bottom: 5px;
 
       width: 20px;

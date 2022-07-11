@@ -1,19 +1,19 @@
 import { CommentCard, Container, Content, UserInfo } from "./style"
 
 
-export function CardComments({userImg, username, content}){
+export function CardComments({comment}){
 
     return(
         <Container>
             <CommentCard>
 
                 <UserInfo>
-                    <img src={userImg} alt={username}/>
-                    <h3>{username}</h3>
+                    <img src={comment.userImg} alt={comment.username}/>
+                    <h3>{comment.username}</h3>
                 </UserInfo>
 
                 <Content>
-                    {content}
+                    {comment.content}
                 </Content>
 
             </CommentCard>
