@@ -20,7 +20,7 @@ function Login() {
     clearFields: true,
     formFields: [email, password],
     submitCallback: (formData) => {
-      console.log(formData);
+      //console.log(formData);
       userLogin(formData);
     },
   });
