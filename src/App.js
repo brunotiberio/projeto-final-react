@@ -6,13 +6,11 @@ import { StyledGlobal } from "./style";
 function App() {
   return (
     <>
-
       <StyledGlobal />
       <Header />     
       <Main>
         <Paths />
       </Main>
-
     </>
   );
 }
