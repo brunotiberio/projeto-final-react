@@ -1,4 +1,8 @@
 import { Route, Routes } from "react-router-dom";
+import CreateNews from "../components/createNews";
+import Login from "../components/login";
+import CompanyRegisterPage from "../pages/company -register";
+import EditNewsPage from "../pages/editNewsPage";
 import EditNews from "../components/editNews";
 import Login from "../components/login";
 import CompanyRegisterPage from "../pages/company -register";
@@ -17,10 +21,8 @@ function Paths() {
       <Route exact path={"/login"} element={<Login />} />
       <Route exact path={"/register"} element={<RegisterPage />} />
       <Route exact path={"/register/person"} element={<PersonRegisterPage />} />
+      <Route exact path={"/mynews/edit"} element={<EditNewsPage />} />
       <Route exact path={"/register/enterprise"} element={<CompanyRegisterPage />} />
-      <Route exact path={"/mynews/edit"} element={<EditNews />} />
-      <Route exact path={"/news/:1"}  element={<SingleArticlePage/>} />
-      <Route exact path={"/mynews/create"} element={<CreateNews />} />
       <Route exact path={"/news/:1"} element={<SingleArticlePage />} />
       <Route exact path={"/profile"} element={<JournalistProfilePage />} />
       <Route exact path={"/mynews/create"} element={<CreateNewsPage />} />
