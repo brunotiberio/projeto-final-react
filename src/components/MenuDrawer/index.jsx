@@ -8,9 +8,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
-export default function TemporaryDrawer() {
-    
+export default function MenuDrawer({profile}) {
+  
+  const { user } = useContext(UserContext);
   const [state, setState] = React.useState({
     left: false,
   });
@@ -51,15 +54,17 @@ export default function TemporaryDrawer() {
         ))}
       </List>
       <Divider />
-      <List>
-        {["login", "cadastro"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
+      {user!==null ? (
+        <List>
+          <ListItem key={"Perfil"} disablePadding>
+            <ListItemButton onClick={profile}>
+              <ListItemText primary={"Perfil"} />
             </ListItemButton>
           </ListItem>
-        ))}
       </List>
+      ):(
+        <p>a</p>
+      )}
     </Box>
   );
 
