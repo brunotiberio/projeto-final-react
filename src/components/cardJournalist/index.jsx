@@ -1,34 +1,75 @@
-import { Button } from '@mui/material'
-import React from 'react'
-import { StyledButtomsContainer, StyledContactsContainer, StyledEmailContainer, StyledH3Container, StyledImgNameContainer, StyledPhoneContainer, StyledProfileJournalistContainer } from './style'
+import { Button } from "@mui/material";
+import React, { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import {
+  StyledButtomsContainer,
+  StyledContactsContainer,
+  StyledH3Container,
+  StyledImgNameContainer,
+  StyledProfileJournalistContainer,
+} from "./style";
+import "./style.css";
 
+function CardJournalist() {
+  const { user } = useContext(UserContext);
 
-export default function CardJournalist() {
-  return (    
+  return (
     <StyledProfileJournalistContainer>
-        <StyledImgNameContainer>
-            <figure>
-                <img src="https://yt3.ggpht.com/ytc/AKedOLQfhAtN42vThJKL3IA6_D1GeAtcx3Q1B69bY_hnp7Q=s900-c-k-c0x00ffffff-no-rj" alt="Perfil de Fulano de tal"  />
-            </figure>
-            <h2>Fulano de Tal</h2>
-        </StyledImgNameContainer>
+      <StyledImgNameContainer>
+        {user?.avatar ? (
+          <figure>
+            <img src={user?.avatar} alt={user?.name} />
+          </figure>
+        ) : (
+          <div className="sem--avatar">
+            <p>Adicione um Avatar</p>
+          </div>
+        )}
+
+        <div>
+          <h2>{user?.name}</h2>
+          <h3>{user?.type}</h3>
+        </div>
+      </StyledImgNameContainer>
+      <div>
+        <h2>Contatos</h2>
         <StyledH3Container>
-            <h3>Contatos</h3>
-        </StyledH3Container>        
+          <h3>Email</h3>
+          <p>{user?.email}</p>
+        </StyledH3Container>
+        <StyledH3Container>
+          <h3>Telefone</h3>
+          <p>{user?.data?.phone}</p>
+        </StyledH3Container>
+      </div>
+      <div>
         <StyledContactsContainer>
-            <StyledPhoneContainer>
-                <p>Telefone</p>
-                <p>(99) 9 9999-9999</p>
-            </StyledPhoneContainer>
-            <StyledEmailContainer>
-                <p>Email</p>
-                <p>fulanodetal@gmail.com</p>
-            </StyledEmailContainer>
+          <h2>Demais informações</h2>
+          <div>
+            {user?.data ? (
+              <>
+                <p>Endereço</p>
+                <p>
+                  {user?.data?.adress.street}, {user?.data?.adress.district},
+                  {user?.data?.adress.cep}, {user?.data?.adress.city} -
+                  {user?.data?.adress.state}
+                </p>
+              </>
+            ) : (
+              <p>
+                Acesse á pagina de edição de perfil para completar seu cadastro.
+              </p>
+            )}
+          </div>
         </StyledContactsContainer>
-        <StyledButtomsContainer>
-            <Button variant="contained" size="small"> Postagens </Button>
-            <Button variant="contained" size="small"> Voltar </Button>
-        </StyledButtomsContainer>
-    </StyledProfileJournalistContainer>    
-  )
+      </div>
+      <StyledButtomsContainer>
+        <Button variant="contained" size="small">
+          Editar Perfil
+        </Button>
+      </StyledButtomsContainer>
+    </StyledProfileJournalistContainer>
+  );
 }
+
+export default CardJournalist;
