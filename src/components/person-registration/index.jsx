@@ -13,6 +13,7 @@ function PersonRegistration() {
   const { userCreate } = useContext(UserContext);
 
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   if (error === "Email already exists") {
     setError("Email já cadastrado");
@@ -47,7 +48,7 @@ function PersonRegistration() {
     formFields: [name, email, password, confirmPassword, type],
     submitCallback: (formData) => {
       //console.log(formData);
-      userCreate(formData, setError);
+      userCreate(formData, setError, setSuccess);
     },
   });
 
@@ -91,11 +92,16 @@ function PersonRegistration() {
         <FormControl fullWidth>
           <InputLabel>Qual seu interesse no site?</InputLabel>
           <Select label="Qual seu interesse no site?" {...type.inputProps}>
-            <MenuItem value="leitor">Sou um Leitor</MenuItem>
-            <MenuItem value="jornalista">Sou um Jornalista/Colunista</MenuItem>
+            <MenuItem value="reader">Sou um Leitor</MenuItem>
+            <MenuItem value="content creator">
+              Sou um Jornalista/Colunista
+            </MenuItem>
           </Select>
         </FormControl>
         {error && <p>{error}</p>}
+        {success && (
+          <p>Cadastro efetuado com sucesso, em breve você será direcionado</p>
+        )}
         <Button variant="contained" size="small" type="submit">
           Cadastrar
         </Button>
