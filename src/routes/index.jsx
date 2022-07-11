@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import CreateNews from "../components/createNews";
-import EditNews from "../components/editNews";
 import Login from "../components/login";
 import CompanyRegisterPage from "../pages/company -register";
+import EditNewsPage from "../pages/editNewsPage";
 import { Homepage } from "../pages/homepage";
 import JournalistProfilePage from "../pages/perfil-jornalista";
 import PersonRegisterPage from "../pages/person-register";
@@ -21,7 +21,7 @@ function Paths() {
         path={"/register/enterprise"}
         element={<CompanyRegisterPage />}
       />
-      <Route exact path={"/mynews/edit"} element={<EditNews />} />
+      <Route exact path={"/mynews/edit"} element={<EditNewsPage />} />
       <Route exact path={"/news/:1"} element={<SingleArticlePage />} />
       <Route exact path={"/profile"} element={<JournalistProfilePage />} />
       <Route exact path={"/mynews/create"} element={<CreateNews />} />
