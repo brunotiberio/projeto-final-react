@@ -14,18 +14,19 @@ import Button from "@mui/material/Button";
 
 import { useForm, useInput } from "lx-react-form";
 
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+
 function CreatorCompanyEdit({ type }) {
   const name = useInput({
     name: "name",
   });
 
   const phone = useInput({
-    name: "telefone",
-
+    name: "phone",
   });
   const cep = useInput({
     name: "cep",
-
   });
   const estate = useInput({
     name: "estate",
@@ -42,25 +43,33 @@ function CreatorCompanyEdit({ type }) {
   const number = useInput({
     name: "number",
   });
+  const { userEdit } = useContext(UserContext);
   const form = useForm({
     clearFields: true,
     formFields: [name, phone, cep, estate, district, city, street, number],
-    submitCallback: ({name, phone, cep, estate, district, city, street, number}) => {
-    console.log(
-        {
-          "name": {name},
-          "data": {
-            "phone": {phone},
-            "adress": {
-              "cep": {cep},
-              "street": {street},
-              "district": {district},
-              "city": {city},
-              "state": {estate}
-            }
-          }
-      }
-      );
+    submitCallback: ({
+      name,
+      phone,
+      cep,
+      estate,
+      district,
+      city,
+      street,
+    }) => {
+      const data = {
+        name:  name ,
+        data: {
+          phone:  phone ,
+          adress: {
+            cep:  cep ,
+            street:  street ,
+            district:  district ,
+            city:  city ,
+            state:  estate ,
+          },
+        },
+      };
+      console.log(data);
     },
   });
   return (
@@ -86,21 +95,20 @@ function CreatorCompanyEdit({ type }) {
         <StyledUserOptions>
           <TextField {...cep.inputProps} label="cep" variant="standard" />
           <TextField {...estate.inputProps} label="estate" variant="standard" />
-          <TextField {...district.inputProps} label="district" variant="standard" />
+          <TextField
+            {...district.inputProps}
+            label="district"
+            variant="standard"
+          />
           <TextField {...city.inputProps} label="city" variant="standard" />
           <TextField {...street.inputProps} label="street" variant="standard" />
           <TextField {...number.inputProps} label="number" variant="standard" />
         </StyledUserOptions>
         <StyledSaveChanges>
-          <Button
-            sx={{ width: 250 }}
-            variant="contained"
-            type="submit"
-          >
+          <Button sx={{ width: 250 }} variant="contained" type="submit">
             Salvar Alterações
           </Button>
         </StyledSaveChanges>
-
       </form>
     </StyledUserCard>
   );

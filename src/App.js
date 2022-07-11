@@ -7,9 +7,7 @@ function App() {
   return (
     <>
       <StyledGlobal />
-
-      <Header />
-      
+      <Header />     
       <Main>
         <Paths />
       </Main>
