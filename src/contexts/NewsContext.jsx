@@ -23,43 +23,50 @@ export const NewsProvider = ({ children }) => {
       const response = await api.get(`/articles/1`);
 
       setArticle(response.data);
-
     } catch (error) {
-
       console.log(error);
-      
     }
   }
 
-  async function getComments(){
+  async function getComments() {
     try {
-      const response = await api.get(`/articles/1?_embed=comments`)
+      const response = await api.get(`/articles/1?_embed=comments`);
 
-      setComments(response.data.comments)
-
+      setComments(response.data.comments);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
-  async function createComment(body){
-    console.log(body)
+  async function createComment(body, userId, articleId) {
+    const resp = {
+      ownerId: userId,
+      articleId: articleId,
+      content: body,
+    };
+
     try {
-      const response = await api.post(`/comments`, body)
+      const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-
+      const response = await api.post(`/comments`, resp, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
     } catch (error) {
-
-      console.log(error)
+      console.log(error);
     }
-
-    
   }
-
 
   return (
     <NewsContext.Provider
-      value={{ getAllNews, allNews, getOneNewsById, article, getComments, comments, createComment }}
+      value={{
+        getAllNews,
+        allNews,
+        getOneNewsById,
+        article,
+        getComments,
+        comments,
+        createComment,
+      }}
     >
       {children}
     </NewsContext.Provider>

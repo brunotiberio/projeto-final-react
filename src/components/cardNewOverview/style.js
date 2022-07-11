@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.button`
   display: flex;
 
   width: 95%;
   max-width: 800px;
-  height: 10rem;
+  height: 11rem;
 
   margin: 10px auto;
 
   border-radius: 10px;
+  border: none;
 
   background-color: #D9D9D9; 
 
@@ -21,8 +22,9 @@ export const Container = styled.div`
 export const ContentImg = styled.div`
   display: flex;
 
-  width: 60%;
-  max-width: 200px;
+  width: 100%;
+  height: 100%;
+  max-width: 150px;
 
   border-right: 1px solid black;
 
@@ -44,8 +46,6 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  gap: 1rem;
-
   p{
     font-size: 16px;
     margin-left: 5px;
@@ -62,10 +62,10 @@ export const ContentInfo = styled.div`
 
   gap: 5px;
 
-  padding: 5px 5px 5px 0 ;
+  padding: 7px 5px 5px 5px;
 
-  button{
-    border: none;
+  div{
+
     border-radius: 10px;
 
     color: #FFFFFF;
@@ -78,7 +78,7 @@ export const ContentInfo = styled.div`
     font-weight: 600;
   }
   @media(min-width: 768px) {
-     
+    padding-top: 15px;
   }
 `;
 
