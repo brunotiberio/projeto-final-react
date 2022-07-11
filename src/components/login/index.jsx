@@ -59,10 +59,10 @@ function Login() {
       </Form>
 
       <AnchroContainer>
-        <Anchor>
-          Não possui uma conta? <a href="/register">Clique aqui </a> e faça o
-          registro.
-        </Anchor>
+        <p>
+          Não possui uma conta?<Anchor href="/register"> Clique aqui</Anchor> e
+          faça o registro.
+        </p>
       </AnchroContainer>
     </Container>
   );
