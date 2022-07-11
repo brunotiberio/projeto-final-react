@@ -57,6 +57,13 @@ export const Content = styled.div`
             font-size: 5px;
         }
     }
+`
+export const NewsRatings=styled.div`
+
+    
+`
+export const NewsButtons=styled.div`
 
 `
+
 

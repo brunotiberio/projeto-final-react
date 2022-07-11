@@ -1,5 +1,8 @@
-import { AuthContent, Content, StyledArticle } from "./style";
+import { AuthContent, Content, NewsButtons, NewsRatings, StyledArticle } from "./style";
 import * as React from "react";
+import Button from "@mui/material/Button";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FlagIcon from "@mui/icons-material/Flag";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
@@ -31,24 +34,44 @@ export function NewsBody({ article }) {
             <span>Redigido por {article.source.author}</span>
           </AuthContent>
 
-          <Box
-            sx={{
-              "& > legend": { mt: 2 },
-            }}
-          >
-            <Typography component="legend">Nota</Typography>
-            <Rating
-              name="simple-controlled"
-              value={value}
-              onChange={(event, newValue) => {
-                setValue(newValue);
+          <NewsRatings>
+            <Box
+              sx={{
+                "& > legend": { mt: 2 },
               }}
-            />
-          </Box>
+            >
+              <Typography component="legend">Nota</Typography>
+              <Rating
+                name="simple-controlled"
+                value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+              />
+            </Box>
+            <NewsButtons>
+            <Button
+              sx={{ width: 100, background: "white", color: "#047F9E" }}
+              variant="contained"
+              onClick={()=>console.log("like")}
+            >
+              <FavoriteIcon />
+              Favorite
+            </Button>
+            <Button
+              sx={{ width: 100, background: "white", color: "red" }}
+              variant="contained"
+              onClick={()=>console.log("report")}
+            >
+              <FlagIcon />
+              Fake
+            </Button>
+            </NewsButtons>
+          </NewsRatings>
 
-          <PostComments/>
+          <PostComments />
 
-          <CardComments/>
+          <CardComments />
         </StyledArticle>
       )}
     </>
