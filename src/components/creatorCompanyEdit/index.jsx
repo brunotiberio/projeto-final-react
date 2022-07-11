@@ -1,6 +1,12 @@
 import Pug from "./../../assets/PUG.jpg";
 
-import { StyledUserCard, StyledUserTop, StyledUserOptions, StyledSaveChanges, StyledTitleAdress, } from "./style";
+import {
+  StyledUserCard,
+  StyledUserTop,
+  StyledUserOptions,
+  StyledSaveChanges,
+  StyledTitleAdress,
+} from "./style";
 
 import Avatar from "@mui/material/Avatar";
 import TextField from "@mui/material/TextField";
@@ -12,37 +18,37 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 function CreatorCompanyEdit({ type }) {
-  const name = useInput({name: "name"});
-  const phone = useInput({name: "phone"});
-  const cep = useInput({name: "cep"});
-  const state = useInput({name: "state"});
-  const district = useInput({name: "district"});
-  const city = useInput({name: "city"});
-  const street = useInput({name: "street"});
-  const number = useInput({name: "number"});
+  const name = useInput({ name: "name" });
+  const phone = useInput({ name: "phone" });
+  const cep = useInput({ name: "cep" });
+  const state = useInput({ name: "state" });
+  const district = useInput({ name: "district" });
+  const city = useInput({ name: "city" });
+  const street = useInput({ name: "street" });
+  const number = useInput({ name: "number" });
 
   const { userEdit } = useContext(UserContext);
-  
+
   const form = useForm({
     clearFields: true,
     formFields: [name, phone, cep, state, district, city, street, number],
     submitCallback: (formData) => {
-      const data={
-        "name": name.value,
-        "data": {
-          "phone": phone.value,
-          "adress": {
-            "cep": cep.value,
-            "street": street.value,
-            "district": district.value,
-            "city": city.value,
-            "state": state.value
-          }
-        }
-      }
+      const data = {
+        name: name.value,
+        data: {
+          phone: phone.value,
+          adress: {
+            cep: cep.value,
+            street: street.value,
+            district: district.value,
+            city: city.value,
+            state: state.value,
+          },
+        },
+      };
       console.log(data);
       userEdit(7, data);
-    }
+    },
   });
   return (
     <StyledUserCard>
@@ -66,7 +72,7 @@ function CreatorCompanyEdit({ type }) {
         <StyledTitleAdress>Endereço</StyledTitleAdress>
         <StyledUserOptions>
           <TextField {...cep.inputProps} label="CEP" variant="standard" />
-          <TextField {...estate.inputProps} label="Estado" variant="standard" />
+          <TextField {...state.inputProps} label="Estado" variant="standard" />
           <TextField
             {...district.inputProps}
             label="Bairro"

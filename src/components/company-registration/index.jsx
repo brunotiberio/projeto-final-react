@@ -1,12 +1,18 @@
 import { useForm, useInput } from "lx-react-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import "./styles.css";
 
 function CompanyRegistration() {
   const { userCreate } = useContext(UserContext);
+
+  const [error, setError] = useState(false);
+
+  if (error === "Email already exists") {
+    setError("Email já cadastrado");
+  }
 
   const name = useInput({
     name: "name",
@@ -59,8 +65,8 @@ function CompanyRegistration() {
     clearFields: true,
     formFields: [name, cnpj, email, password, confirmPassword],
     submitCallback: (formData) => {
-      console.log(formData);
-      userCreate(formData);
+      //console.log(formData);
+      userCreate(formData, setError);
     },
   });
 
@@ -108,12 +114,14 @@ function CompanyRegistration() {
           helperText={confirmPassword.error}
           {...confirmPassword.inputProps}
         />
-
+        {error && <p>{error}</p>}
         <Button variant="contained" size="small" type="submit">
           Cadastrar
         </Button>
       </form>
-      <p>Já possui uma conta? Clique aqui e faça login.</p>
+      <p>
+        Já possui uma conta? <a href="/login">Clique aqui </a> e faça login.
+      </p>
     </div>
   );
 }

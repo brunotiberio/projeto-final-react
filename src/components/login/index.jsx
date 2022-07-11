@@ -1,12 +1,21 @@
 import { useForm, useInput } from "lx-react-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Anchor, AnchroContainer, Form, Title } from "./style";
-import { Container } from "../../style/index"
+import { Container } from "../../style/index";
 function Login() {
   const { userLogin } = useContext(UserContext);
+  const [error, setError] = useState(false);
+
+  if (error === "Incorrect password") {
+    setError("Senha Incorreta");
+  }
+
+  if (error === "Cannot find user") {
+    setError("Email não cadastrado");
+  }
 
   const email = useInput({ name: "email", validation: "email" });
 
@@ -21,7 +30,7 @@ function Login() {
     formFields: [email, password],
     submitCallback: (formData) => {
       //console.log(formData);
-      userLogin(formData);
+      userLogin(formData, setError);
     },
   });
 
@@ -43,13 +52,17 @@ function Login() {
           helperText={password.error}
           {...password.inputProps}
         />
-
+        {error && <p>{error}</p>}
         <Button variant="contained" size="small" type="submit">
           Logar
         </Button>
       </Form>
+
       <AnchroContainer>
-      <Anchor>Não possui uma conta? Clique aqui e faça o registro.</Anchor>
+        <p>
+          Não possui uma conta?<Anchor href="/register"> Clique aqui</Anchor> e
+          faça o registro.
+        </p>
       </AnchroContainer>
     </Container>
   );
