@@ -10,10 +10,16 @@ import React, { useEffect, useState } from "react";
 
 import { NavButtons } from "../navbar";
 import { StyledHeader } from "./style";
-import TemporaryDrawer from "../drawer";
+import MenuDrawer from "../MenuDrawer";
+
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import BasicMenu from "../userLogedMenu";
 import SearchDrawer from "../searchDrawer";
 
 export const Header = () => {
+  const { user } = useContext(UserContext);
+  console.log(user);
   const navigate = useNavigate();
 
   function login() {
@@ -26,6 +32,12 @@ export const Header = () => {
 
   function home() {
     navigate("/");
+  }
+  function profile(){
+    navigate("/profile")
+  }
+  function mynews(){
+    navigate("/mynews")
   }
 
   const [mQuery, setMQuery] = useState({
@@ -41,9 +53,9 @@ export const Header = () => {
     <StyledHeader>
       {mQuery && !mQuery.matches ? (
         <>
-          <TemporaryDrawer onClick={() => home()} />
+          <MenuDrawer profile={profile} />
           <h1>logo</h1>
-          <SearchDrawer />
+          <SearchDrawer/>
         </>
       ) : (
         <>
@@ -74,12 +86,29 @@ export const Header = () => {
               },
             }}
           >
-            <Button variant="contained" size="small" onClick={() => login()}>
-              Login
-            </Button>
-            <Button variant="contained" size="small" onClick={() => register()}>
-              Cadastro
-            </Button>
+            {user === null ? (
+              <>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={() => login()}
+                >
+                  Login
+                </Button>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={() => register()}
+                >
+                  Cadastro
+                </Button>
+              </>
+            )
+            :(
+              <BasicMenu mynews={mynews} profile={profile} home={home}/>
+            )
+          
+          }
           </Box>
         </>
       )}

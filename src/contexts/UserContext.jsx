@@ -77,11 +77,7 @@ export const UserProvider = ({ children }) => {
   }
 
   return (
-<<<<<<< HEAD
-    <UserContext.Provider value={{ userLogin, userCreate, userEdit}}>
-=======
     <UserContext.Provider value={{ userLogin, userCreate, userEdit, user }}>
->>>>>>> f661a37f5ff0868b5751ded8b62f470a092f9851
       {children}
     </UserContext.Provider>
   );
