@@ -1,17 +1,41 @@
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { api } from "../services/api";
 
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("@KNN-TOKEN");
+    const id = localStorage.getItem("@KNN-ID");
+
+    async function logado() {
+      try {
+        const parsedToken = JSON.parse(token);
+        const idParsed = JSON.parse(id);
+        const response = await api.get(`/users/${idParsed}`, {
+          headers: {
+            Authorization: `Bearer ${parsedToken}`,
+          },
+        });
+        setUser(response.data);
+      } catch (error) {}
+    }
+    logado();
+  }, []);
+
   async function userLogin(formData) {
     try {
       const response = await api.post("/login", formData);
-      //   console.log(response);
+      //console.log(response.data.user);
+      setUser(response.data.user);
       localStorage.setItem(
         "@KNN-TOKEN",
         JSON.stringify(response.data.accessToken)
       );
+      localStorage.setItem("@KNN-ID", response.data.user.id);
     } catch (error) {
       console.log(error);
     }
@@ -19,24 +43,28 @@ export const UserProvider = ({ children }) => {
 
   async function userCreate(formData) {
     try {
-      const response = await api.post("/register", formData);
+      await api.post("/register", formData);
       // console.log(response);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function userEdit({formData}){
+
+  async function userEdit(userId,formData){
     try {
-      const response = await api.patch("users/5", formData);
+      const token= JSON.parse(localStorage.getItem("@KNN-TOKEN"))
+      const response = await api.patch(`users/${userId}`, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       console.log(response)
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
   return (
-    <UserContext.Provider value={{ userLogin, userCreate }}>
+    <UserContext.Provider value={{ userLogin, userCreate, userEdit }}>
       {children}
     </UserContext.Provider>
   );
