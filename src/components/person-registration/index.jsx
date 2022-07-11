@@ -5,12 +5,18 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import "./styles.css";
 
 function PersonRegistration() {
   const { userCreate } = useContext(UserContext);
+
+  const [error, setError] = useState(false);
+
+  if (error === "Email already exists") {
+    setError("Email já cadastrado");
+  }
 
   const name = useInput({
     name: "name",
@@ -40,8 +46,8 @@ function PersonRegistration() {
     clearFields: true,
     formFields: [name, email, password, confirmPassword, type],
     submitCallback: (formData) => {
-      console.log(formData);
-      userCreate(formData);
+      //console.log(formData);
+      userCreate(formData, setError);
     },
   });
 
@@ -89,7 +95,7 @@ function PersonRegistration() {
             <MenuItem value="jornalista">Sou um Jornalista/Colunista</MenuItem>
           </Select>
         </FormControl>
-
+        {error && <p>{error}</p>}
         <Button variant="contained" size="small" type="submit">
           Cadastrar
         </Button>
