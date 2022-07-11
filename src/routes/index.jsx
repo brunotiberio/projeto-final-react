@@ -23,7 +23,7 @@ function Paths() {
         path={"/register/enterprise"}
         element={<CompanyRegisterPage />}
       />
-      <Route exact path={"/news/:1"} element={<SingleArticlePage />} />
+      <Route exact path={"/news/:id"} element={<SingleArticlePage />} />
       <Route exact path={"/profile"} element={<JournalistProfilePage />} />
       <Route
         exact

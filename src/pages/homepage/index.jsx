@@ -5,11 +5,11 @@ import { NewsContext } from "../../contexts/NewsContext";
 import { Container } from "./script";
 
 export function Homepage() {
-  const { allNews, getAllNews } = useContext(NewsContext);
+  const { allNews, getAllNews, article } = useContext(NewsContext);
 
   useEffect(() => {
     getAllNews();
-  }, []);
+  }, [article]);
 
   return (
     <Container>

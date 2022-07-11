@@ -27,7 +27,7 @@ function CreatorCompanyEdit({ type }) {
   const street = useInput({ name: "street" });
   const number = useInput({ name: "number" });
 
-  const { userEdit } = useContext(UserContext);
+  const { userEdit, user } = useContext(UserContext);
 
   const form = useForm({
     clearFields: true,
@@ -47,7 +47,7 @@ function CreatorCompanyEdit({ type }) {
         },
       };
       console.log(data);
-      userEdit(7, data);
+      userEdit(user?.id, data);
     },
   });
   return (
