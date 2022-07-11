@@ -30,6 +30,7 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
+
   return (
     <NewsContext.Provider
       value={{ getAllNews, allNews, getOneNewsById, article }}
