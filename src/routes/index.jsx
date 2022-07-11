@@ -3,6 +3,7 @@ import CreateNews from "../components/createNews";
 import EditNews from "../components/editNews";
 import Login from "../components/login";
 import CompanyRegisterPage from "../pages/company -register";
+import CreatorCompanyEditPage from "../pages/creatorCompanyEdit";
 import { Homepage } from "../pages/homepage";
 import PersonRegisterPage from "../pages/person-register";
 import RegisterPage from "../pages/register";
@@ -15,14 +16,10 @@ function Paths() {
       <Route exact path={"/login"} element={<Login />} />
       <Route exact path={"/register"} element={<RegisterPage />} />
       <Route exact path={"/register/person"} element={<PersonRegisterPage />} />
-      <Route
-        exact
-        path={"/register/enterprise"}
-        element={<CompanyRegisterPage />}
-      />
+      <Route exact path={"/register/enterprise"} element={<CompanyRegisterPage />} />
       <Route exact path={"/mynews/edit"} element={<EditNews />} />
-      <Route exact path={"/news/:1"}  element={<SingleArticlePage/>}/>
-      <Route exact path={"/profile"} />
+      <Route exact path={"/news/:1"}  element={<SingleArticlePage/>} />
+      <Route exact path={"/profile"} element={<CreatorCompanyEditPage />} />
       <Route exact path={"/mynews/create"} element={<CreateNews />} />
     </Routes>
   );
