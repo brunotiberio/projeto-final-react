@@ -19,7 +19,6 @@ export const NewsProvider = ({ children }) => {
   }
 
   async function getOneNewsById(id) {
-    console.log(id);
     try {
       const response = await api.get(`/articles/${id}`);
 
@@ -57,6 +56,43 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
+  async function createArticle(formData) {
+    const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
+
+    const body = {
+      ...formData,
+      authorId: authorId,
+    };
+
+    try {
+      const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
+
+      const response = await api.post(`/articles`, body, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function editArticle(formData) {
+    const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
+
+    const body = {
+      ...formData,
+      authorId: authorId,
+    };
+    try {
+      const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
+
+      const response = await api.patch(`/articles`, body, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <NewsContext.Provider
       value={{
@@ -67,6 +103,8 @@ export const NewsProvider = ({ children }) => {
         getComments,
         comments,
         createComment,
+        createArticle,
+        editArticle,
       }}
     >
       {children}

@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm, useSelect, useInput } from "lx-react-form";
 
 import { Button, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 
 import { FormContainer, InputsContainer, StyledFormControl, StyledInput } from './style'
+import { NewsContext } from '../../contexts/NewsContext';
 
 export default function CreateNews() {
+
+    const {createArticle} = useContext(NewsContext)
 
 
     const title = useInput({
@@ -32,7 +35,7 @@ export default function CreateNews() {
         clearFields: true,
         formFields: [title, category, urlToImage, description, content],
         submitCallback: (formData) => {
-            console.log(formData)
+            createArticle(formData)
         }
     })
 
