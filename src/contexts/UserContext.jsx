@@ -52,10 +52,15 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  async function userCreate(formData, setError) {
+  async function userCreate(formData, setError, setSuccess) {
     try {
       await api.post("/register", formData);
-      // console.log(response);
+      //console.log(response);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        navigate("/");
+      }, 3000);
     } catch (error) {
       setError(error.response.data);
       setTimeout(() => {
@@ -77,7 +82,7 @@ export const UserProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ userLogin, userCreate, userEdit, user}}>
+    <UserContext.Provider value={{ userLogin, userCreate, userEdit, user }}>
       {children}
     </UserContext.Provider>
   );

@@ -1,6 +1,10 @@
 import { useForm, useInput } from "lx-react-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import "./styles.css";
@@ -9,6 +13,7 @@ function CompanyRegistration() {
   const { userCreate } = useContext(UserContext);
 
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   if (error === "Email already exists") {
     setError("Email já cadastrado");
@@ -61,20 +66,25 @@ function CompanyRegistration() {
     same: password.value,
     validation: "senha",
   });
+
+  const type = useInput({
+    name: "type",
+  });
+
   const form = useForm({
     clearFields: true,
-    formFields: [name, cnpj, email, password, confirmPassword],
+    formFields: [name, cnpj, email, password, confirmPassword, type],
     submitCallback: (formData) => {
       //console.log(formData);
-      userCreate(formData, setError);
+      userCreate(formData, setError, setSuccess);
     },
   });
 
   return (
-    <div>
+    <div className="teste---remover">
       <h2>Cadastro</h2>
       <h3>Empresa Parceira</h3>
-      <form className="form" onSubmit={form.handleSubmit}>
+      <form className="forme" onSubmit={form.handleSubmit}>
         <TextField
           type="text"
           label="Nome da Empresa"
@@ -114,7 +124,18 @@ function CompanyRegistration() {
           helperText={confirmPassword.error}
           {...confirmPassword.inputProps}
         />
+
+        <FormControl fullWidth>
+          <InputLabel>Qual seu interesse no site?</InputLabel>
+          <Select label="Qual seu interesse no site?" {...type.inputProps}>
+            <MenuItem value="company">Estou a procura de colunistas</MenuItem>
+            <MenuItem value="company">Estou a procura de jornalistas</MenuItem>
+          </Select>
+        </FormControl>
         {error && <p>{error}</p>}
+        {success && (
+          <p>Cadastro efetuado com sucesso, em breve você será direcionado</p>
+        )}
         <Button variant="contained" size="small" type="submit">
           Cadastrar
         </Button>
