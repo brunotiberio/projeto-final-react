@@ -86,23 +86,23 @@ function CreatorCompanyEdit({ type }) {
           />
           <TextField
             {...phone.inputProps}
-            label="Alterar number"
-            placeholder="(55) 00 00000-0000"
+            label="Alterar telefone"
+            placeholder="(55) 0 00000-0000"
             variant="standard"
           />
         </StyledUserTop>
         <StyledTitleAdress>Endereço</StyledTitleAdress>
         <StyledUserOptions>
-          <TextField {...cep.inputProps} label="cep" variant="standard" />
-          <TextField {...estate.inputProps} label="estate" variant="standard" />
+          <TextField {...cep.inputProps} label="CEP" variant="standard" />
+          <TextField {...estate.inputProps} label="Estado" variant="standard" />
           <TextField
             {...district.inputProps}
-            label="district"
+            label="Bairro"
             variant="standard"
           />
-          <TextField {...city.inputProps} label="city" variant="standard" />
-          <TextField {...street.inputProps} label="street" variant="standard" />
-          <TextField {...number.inputProps} label="number" variant="standard" />
+          <TextField {...city.inputProps} label="Cidade" variant="standard" />
+          <TextField {...street.inputProps} label="Rua" variant="standard" />
+          <TextField {...number.inputProps} label="Número" variant="standard" />
         </StyledUserOptions>
         <StyledSaveChanges>
           <Button sx={{ width: 250 }} variant="contained" type="submit">
