@@ -1,8 +1,19 @@
 import undraw_appreciation_re_pyhy from "../../assets/undraw_appreciation_re_pyhy.svg";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router";
 import "./styles.css";
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
+  function person() {
+    navigate("/register/person");
+  }
+
+  function enterprise() {
+    navigate("/register/enterprise");
+  }
+
   return (
     <div className="temp--cont--reg">
       <div className="temp--cont--int">
@@ -39,7 +50,7 @@ function RegisterPage() {
               <li>Tenha mais vantagens em relação a quem não é logado</li>
             </ul>
           </div>
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" onClick={() => person()}>
             SOU GERADOR DE CONTEÚDO OU LEITOR
           </Button>
         </div>
@@ -50,7 +61,7 @@ function RegisterPage() {
             <li>Veja todas as postagens de um jornalista ou colunista</li>
             <li>Crie seu perfil completo e obtenha vantagens</li>
           </ul>
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" onClick={() => enterprise()}>
             SEJA UMA EMPRESA PARCEIRA
           </Button>
         </div>

@@ -4,6 +4,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button, FormControl } from "@mui/material";
 import { Box } from "@mui/system";
+import { useNavigate } from "react-router";
 
 import React, { useEffect, useState } from "react";
 
@@ -13,9 +14,24 @@ import TemporaryDrawer from "../drawer";
 import SearchDrawer from "../searchDrawer";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  function login() {
+    navigate("/login");
+  }
+
+  function register() {
+    navigate("/register");
+  }
+
+  function home() {
+    navigate("/");
+  }
+
   const [mQuery, setMQuery] = useState({
     matches: window.innerWidth > 800 ? true : false,
   });
+
   useEffect(() => {
     let mediaQuery = window.matchMedia("(min-width: 800px)");
     mediaQuery.addEventListener("change", () => setMQuery(mediaQuery));
@@ -25,13 +41,13 @@ export const Header = () => {
     <StyledHeader>
       {mQuery && !mQuery.matches ? (
         <>
-          <TemporaryDrawer />
+          <TemporaryDrawer onClick={() => home()} />
           <h1>logo</h1>
-          <SearchDrawer/>
+          <SearchDrawer />
         </>
       ) : (
         <>
-          <h1>Logo</h1>
+          <h1 onClick={() => home()}>Logo</h1>
           <NavButtons />
           <FormControl variant="standard">
             <InputLabel htmlFor="input-with-icon-adornment">
@@ -58,10 +74,10 @@ export const Header = () => {
               },
             }}
           >
-            <Button variant="contained" size="small">
+            <Button variant="contained" size="small" onClick={() => login()}>
               Login
             </Button>
-            <Button variant="contained" size="small">
+            <Button variant="contained" size="small" onClick={() => register()}>
               Cadastro
             </Button>
           </Box>
