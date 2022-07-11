@@ -26,9 +26,9 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  async function userEdit(formData){
+  async function userEdit({formData}){
     try {
-      const response = await api.post("/users/:id", formData);
+      const response = await api.patch("users/5", formData);
       console.log(response)
     } catch (error) {
       console.log(error)
