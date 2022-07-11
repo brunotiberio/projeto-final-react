@@ -4,9 +4,12 @@ import { useForm, useInput } from "lx-react-form";
 import { Button, TextField } from '@mui/material'
 
 import { FormContainer, InputsContainer } from './style'
+import { useContext } from 'react';
+import { NewsContext } from '../../contexts/NewsContext';
 
 export default function EditNews() {
 
+    const {editArticle} = useContext(NewsContext)
 
     const title = useInput({
         name: 'title'
@@ -28,7 +31,7 @@ export default function EditNews() {
         clearFields: true,
         formFields: [title, urlToImage, description, content],
         submitCallback: (formData) => {
-            console.log(formData)
+            editArticle(formData)
         }
     })
 
