@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { Form } from "./style";
+import { Anchor, AnchroContainer, Form, Title } from "./style";
 import { Container } from "../../style/index"
 function Login() {
   const { userLogin } = useContext(UserContext);
@@ -27,7 +27,7 @@ function Login() {
 
   return (
     <Container>
-      <h2>Área de Login</h2>
+      <Title>Área de Login</Title>
       <Form className="form" onSubmit={form.handleSubmit}>
         <TextField
           type="email"
@@ -48,7 +48,9 @@ function Login() {
           Logar
         </Button>
       </Form>
-      <p>Não possui uma conta? Clique aqui e faça o registro.</p>
+      <AnchroContainer>
+      <Anchor>Não possui uma conta? Clique aqui e faça o registro.</Anchor>
+      </AnchroContainer>
     </Container>
   );
 }

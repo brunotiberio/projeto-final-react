@@ -23,9 +23,10 @@ html {
 `
 
 export const Container = styled.div`
-width: 25vw;
+width: 30vw;
 height: 85vh;
 display:flex;
+justify-content: space-around;
 flex-direction: column;
 align-self: center;
 margin: 2rem auto;
@@ -34,8 +35,4 @@ background-color: #D9D9D9;
 @media(max-width: 960px) {
     width: 55vw;
 }
-`
-
-export const Title = styled.h1`
-    font-size: 1.;
 `
