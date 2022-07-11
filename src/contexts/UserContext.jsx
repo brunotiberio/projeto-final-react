@@ -50,17 +50,21 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  async function userEdit({ formData }) {
+
+  async function userEdit(userId,formData){
     try {
-      const response = await api.patch("users/5", formData);
-      console.log(response);
+      const token= JSON.parse(localStorage.getItem("@KNN-TOKEN"))
+      const response = await api.patch(`users/${userId}`, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log(response)
     } catch (error) {
       console.log(error);
     }
   }
 
   return (
-    <UserContext.Provider value={{ userLogin, userCreate, user }}>
+    <UserContext.Provider value={{ userLogin, userCreate, userEdit }}>
       {children}
     </UserContext.Provider>
   );
