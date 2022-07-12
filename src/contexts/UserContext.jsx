@@ -69,13 +69,18 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  async function userEdit(userId, formData) {
+  async function userEdit(userId, formData, setSuccess) {
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
-      const response = await api.patch(`users/${userId}`, formData, {
+      await api.patch(`users/${userId}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        navigate("/profile");
+      }, 3000);
+      //console.log(response);
     } catch (error) {
       console.log(error);
     }

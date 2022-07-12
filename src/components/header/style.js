@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledHeader = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  margin: 0px 5%; 
+  margin: 0px 5%;
   justify-content: space-between;
   align-items: center;
 
@@ -12,26 +12,32 @@ export const StyledHeader = styled.div`
 
   height: 100px;
 
-  img{
+  .logo--cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
     margin-right: 10px;
 
     width: 30px;
     height: 30px;
+    cursor: pointer;
 
-    @media (min-width: 420px){
+    @media (min-width: 420px) {
       width: 50px;
       height: 50px;
-    }    
-  }
-
-  h1{
-    font-size: 11px;
-
-    @media (min-width: 420px){
-      font-size: 15px;
     }
   }
 
+  h1 {
+    font-size: 11px;
+
+    @media (min-width: 420px) {
+      font-size: 15px;
+    }
+  }
 `;
 
 export const StyledHeaderList = styled.div`
