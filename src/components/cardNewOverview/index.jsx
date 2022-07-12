@@ -31,8 +31,6 @@ export function CardNewsOverview({ article }) {
   //   return name;
   // }
 
-  console.log(typeof article.name)
-
   function handleNavigation(){
     navigate(`/news/${article.id}`)
   }
