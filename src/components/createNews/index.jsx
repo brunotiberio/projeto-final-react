@@ -1,18 +1,17 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useForm, useSelect, useInput } from "lx-react-form";
 
 import { Button, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 
-import { FormContainer, InputsContainer, StyledFormControl, StyledInput, SuccessMessage } from './style'
+import { FormContainer, InputsContainer, StyledFormControl, StyledInput } from './style'
 import { NewsContext } from '../../contexts/NewsContext';
 import { UserContext } from '../../contexts/UserContext';
+
 
 export default function CreateNews() {
 
     const {createArticle} = useContext(NewsContext)
     const {user} = useContext(UserContext) 
-
-    const [success, setSuccess] =useState(false) 
 
 
     const title = useInput({
@@ -39,7 +38,7 @@ export default function CreateNews() {
         clearFields: true,
         formFields: [title, category, urlToImage, description, content],
         submitCallback: (formData) => {
-            createArticle(formData, user, setSuccess)
+            createArticle(formData, user)
         }
     })
 
@@ -109,15 +108,6 @@ export default function CreateNews() {
 
             <Button variant="contained" type="submit" style={{width: '95%', marginTop: 20, marginBottom: 20}}> Criar notícia </Button>
         </form>
-
-        {
-            success? (
-                <SuccessMessage> Notícia criada com sucesso</SuccessMessage>
-            ) : (
-                null
-            )
-        }
-
     </FormContainer>
     </>
   )
