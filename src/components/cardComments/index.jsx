@@ -1,4 +1,4 @@
-import { CommentCard, Container, Content, UserInfo } from "./style"
+import { CommentCard, Content, UserInfo } from "./style"
 
 
 export function CardComments({comment}){
