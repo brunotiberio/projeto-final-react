@@ -48,7 +48,7 @@ export const Content = styled.div`
   min-height: 85%;
   height: 80px;
 
-  margin-top: 2vh;
+  margin-top: 5px;
 
   p{
     font-size: 10px;
@@ -79,7 +79,7 @@ export const ContentInfo = styled.div`
 
   gap: 5px;
 
-  padding: 7px 5px 5px 5px;
+  padding: 5px;
 
   div{
 
