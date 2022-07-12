@@ -22,10 +22,6 @@ export const StyledGlobal = createGlobalStyle`
         height: auto;
         max-width: 100%;
     }
-    html {
-        ${'' /* font-size:62.5%; */}
-    }
-
     h1 {
         font-size:2rem;
     }
@@ -38,7 +34,7 @@ flex-direction: column;
 align-items: center;
 
 height:100%;
-max-height:450px;
+max-height: ${(props) => props.maxHeight}px;
 gap:2em;
 
 width:100%;

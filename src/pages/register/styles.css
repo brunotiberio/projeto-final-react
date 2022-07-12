@@ -1,25 +1,20 @@
-.temp--cont--reg {
-  display: flex;
-  flex-direction: column;
-}
-
-.temp--cont--int {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
 .img--invertida {
-  transform: scaleX(-1);
-  height: 150px;
+	transform: scaleX(-1);
+	max-width: 230px;
 }
 
 .img--n--invertida {
-  height: 150px;
+	max-width: 230px;
 }
 
 .temp--cont--opt {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
+}
+
+@media (max-width: 987px) {
+	.img--n--invertida,
+	.img--invertida {
+		display: none;
+	}
 }
