@@ -11,19 +11,17 @@ import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
-export default function MenuDrawer({profile}) {
-  
+export default function MenuDrawer({ logOut, contentCreators,createNews,profile}) {
   const { user } = useContext(UserContext);
   const [state, setState] = React.useState({
     left: false,
   });
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
+      ) {
+        return;
     }
 
     setState({ ...state, [anchor]: open });
@@ -31,10 +29,10 @@ export default function MenuDrawer({profile}) {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 150 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+    sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 150 }}
+    role="presentation"
+    onClick={toggleDrawer(anchor, false)}
+    onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
         {[
@@ -54,20 +52,60 @@ export default function MenuDrawer({profile}) {
         ))}
       </List>
       <Divider />
-      {user!==null ? (
+      {user?.type==="content creator" && (
         <List>
-          <ListItem key={"Perfil"} disablePadding>
-            <ListItemButton onClick={profile}>
-              <ListItemText primary={"Perfil"} />
-            </ListItemButton>
-          </ListItem>
+        <ListItem key={"postar noticias"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"Postar Noticia"} onClick={createNews} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={"profile"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"profile"} onClick={profile} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={"logOut"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"logOut"} onClick={logOut} />
+          </ListItemButton>
+        </ListItem>
       </List>
-      ):(
-        <p>a</p>
+      )}
+      {user?.type==="company" && (
+        <List>
+        <ListItem key={"ver perfis"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"ver perfis"} onClick={contentCreators} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={"profile"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"profile"} onClick={profile} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={"logOut"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"logOut"} onClick={logOut} />
+          </ListItemButton>
+        </ListItem>
+      </List>
+      )}
+      {user?.type==="reader" && (
+        <List>
+        <ListItem key={"profile"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"profile"} onClick={profile} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={"logOut"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"logOut"} onClick={logOut} />
+          </ListItemButton>
+        </ListItem>
+      </List>
       )}
     </Box>
   );
-
   return (
     <div>
       {["left"].map((anchor) => (
@@ -87,4 +125,5 @@ export default function MenuDrawer({profile}) {
       ))}
     </div>
   );
+
 }

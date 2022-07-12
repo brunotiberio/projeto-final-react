@@ -5,19 +5,36 @@ import { NewsContext } from "../../contexts/NewsContext";
 import { Container } from "./script";
 
 export function Homepage() {
-  const { allNews, getAllNews, article } = useContext(NewsContext);
+  const {
+    allNews,
+    getAllNews,
+    article,
+    filter,
+    filteredNews,
+    setFilteredNews,
+  } = useContext(NewsContext);
 
   useEffect(() => {
     getAllNews();
   }, [article]);
 
+  useEffect(() => {
+    if (filter && allNews) {
+      setFilteredNews(allNews.filter((article) => article.category === filter));
+    }
+  }, [filter]);
   return (
     <Container>
-      
-      {allNews &&
-        allNews.map((article) => (
-          <CardNewsOverview article={article} key={article.id} />
-        ))}
+      {
+      filteredNews ?   
+          filteredNews?.map((article) => (
+            <CardNewsOverview article={article} key={article.id} />
+          ))
+      : 
+          allNews?.map((article) => (
+            <CardNewsOverview article={article} key={article.id} />
+          ))
+      }
     </Container>
   );
 }
