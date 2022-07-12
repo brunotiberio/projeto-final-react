@@ -53,3 +53,10 @@ export const StyledFormControl = styled(FormControl)`
     }
     
 `
+export const SuccessMessage = styled.div`
+    display: flex;
+    width: 15rem;
+    margin: 10px auto;
+
+    background-color: aquamarine;
+`

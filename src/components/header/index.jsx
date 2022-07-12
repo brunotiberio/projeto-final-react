@@ -21,7 +21,7 @@ import logo_knn from "../../assets/logo_knn.png";
 
 export const Header = () => {
   const { user } = useContext(UserContext);
-  console.log(user)
+  
   const navigate = useNavigate();
 
   function login() {

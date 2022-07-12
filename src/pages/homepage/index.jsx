@@ -12,8 +12,7 @@ export function Homepage() {
   }, [article]);
 
   return (
-    <Container>
-      
+    <Container>      
       {allNews &&
         allNews.map((article) => (
           <CardNewsOverview article={article} key={article.id} />
