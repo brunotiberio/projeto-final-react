@@ -95,7 +95,7 @@ export const UserProvider = ({ children }) => {
           Authorization: `Bearer ${parsedToken}`,
         },
       });
-      console.log(response.data);
+      //console.log(response.data);
       setAllUsers(response.data);
     } catch (error) {
       console.log(error);

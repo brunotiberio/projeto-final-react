@@ -17,15 +17,18 @@ function AllJournalists() {
       <h2>Criadores de Conteúdo</h2>
       <div className="apenas-teste">
         {allUsers?.map((user) => {
-          return (
-            <ContentCreator
-              name={user.name}
-              avatar={user.avatar}
-              city={user.data?.adress.city}
-              state={user.data?.adress.state}
-              key={user.id}
-            />
-          );
+          if (user.type === "content creator") {
+            return (
+              <ContentCreator
+                name={user.name}
+                avatar={user.avatar}
+                city={user.data?.adress.city}
+                state={user.data?.adress.state}
+                key={user.id}
+                id={user.id}
+              />
+            );
+          }
         })}
       </div>
     </div>
