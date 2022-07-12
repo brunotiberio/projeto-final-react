@@ -35,7 +35,6 @@ export const UserProvider = ({ children }) => {
   async function userLogin(formData, setError) {
     try {
       const response = await api.post("/login", formData);
-      //console.log(response.data.user);
       setUser(response.data.user);
       localStorage.setItem(
         "@KNN-TOKEN",
@@ -48,7 +47,7 @@ export const UserProvider = ({ children }) => {
       setTimeout(() => {
         setError(false);
       }, 5000);
-      //console.log(error.response.data);
+      console.log(error.response.data);
     }
   }
 

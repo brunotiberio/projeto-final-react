@@ -1,5 +1,6 @@
 import {
   AuthContent,
+  Container,
   Content,
   NewsButtons,
   NewsRatings,
@@ -48,7 +49,7 @@ export function NewsBody({ article }) {
           <section>{article.content}</section>
 
           <AuthContent>
-            <span>Redigido por {article.source.author}</span>
+            <span>Redigido por {article.author}</span>
           </AuthContent>
 
           <NewsRatings>
@@ -88,10 +89,12 @@ export function NewsBody({ article }) {
 
           <PostComments />
 
-          {comments &&
-            comments.map((comment) => (
-              <CardComments comment={comment} key={comment.id} />
-            ))}
+          <Container>
+            {comments &&
+              comments.map((comment) => (
+                <CardComments comment={comment} key={comment.id} />
+              ))}
+          </Container>
         </StyledArticle>
       )}
     </>
