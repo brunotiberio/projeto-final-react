@@ -21,8 +21,8 @@ export function CardNewsOverview({ article }) {
       return content.split(" ").splice(0, 20).join(" ") + "...";
     }
     return content;
-  } 
-  
+  }
+
   function handleNavigation(){
     navigate(`/news/${article.id}`)
   }
@@ -48,10 +48,6 @@ export function CardNewsOverview({ article }) {
               <div>{article.category}</div>
             </ContentInfo>
           </Content>
-
-        
-
-
 
       <ContentUser>
 

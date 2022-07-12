@@ -13,7 +13,7 @@ export const Container = styled.div`
     height: 100%;   
 
     width: 95%;
-  max-width: 800px;
+    max-width: 800px;
 
     background-color: #281E1E;
 

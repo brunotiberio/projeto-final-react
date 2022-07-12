@@ -100,19 +100,26 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function editArticle(formData, id) {
+  async function editArticle(formData, id, setSuccess) {
     const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
 
     const body = {
       ...formData,
       authorId: authorId,
     };
+    
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
       const response = await api.patch(`/articles/${id}`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
+    setSuccess(true)
+
+    setTimeout(()=>{
+      setSuccess(false)
+      navigate("/")
+    }, 2000)
     } catch (error) {
       console.log(error);
     }
