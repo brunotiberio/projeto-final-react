@@ -34,13 +34,12 @@ export const StyledGlobal = createGlobalStyle`
 export const Container = styled.div`
 display:flex;
 justify-content: center;
-
-gap:2em;
 flex-direction: column;
 align-items: center;
 
 height:100%;
-max-height:600px;
+max-height:450px;
+gap:2em;
 
 width:100%;
 max-width: 90%;
@@ -53,4 +52,6 @@ background-color: #D9D9D9;
 box-shadow: 32px 43px 58px -20px rgba(0,0,0,0.46);
 
 border-radius:15px;
+
+
 `

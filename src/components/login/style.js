@@ -16,6 +16,7 @@ export const Form = styled.form`
 
   @media(max-width:375px){
     align-items:center;
+    margin: 0;
 
     button{
       width:50%;
@@ -28,6 +29,10 @@ export const Title = styled.h1`
   font-weight: 700;
   text-align: center;
   color:#1976D2;
+
+  @media(max-width:390px){
+    font-size: 1.4rem;
+  }
 `
 
 export const AnchroContainer = styled.div`

@@ -1,10 +1,14 @@
 import { useForm, useInput } from "lx-react-form";
+
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+
 import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
+
 import { Anchor, AnchroContainer, Form, Title } from "./style";
 import { Container } from "../../style/index";
+
 function Login() {
   const { userLogin } = useContext(UserContext);
   const [error, setError] = useState(false);
@@ -39,6 +43,7 @@ function Login() {
       <Title>Área de Login</Title>
       <Form className="form" onSubmit={form.handleSubmit}>
         <TextField
+          className="Input"
           type="email"
           error={email.error && true}
           label="Email"
