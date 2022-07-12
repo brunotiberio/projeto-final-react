@@ -17,6 +17,8 @@ import { UserContext } from "../../contexts/UserContext";
 import BasicMenu from "../userLogedMenu";
 import SearchDrawer from "../searchDrawer";
 
+import logo_knn from '../../assets/logo_knn.png'
+
 export const Header = () => {
   const { user } = useContext(UserContext);
   
@@ -54,12 +56,14 @@ export const Header = () => {
       {mQuery && !mQuery.matches ? (
         <>
           <MenuDrawer profile={profile} />
-          <h1>logo</h1>
+          <img src={logo_knn} alt="Kenzie News Network" />
+          <h1>Kenzie News Network</h1>
           <SearchDrawer/>
         </>
       ) : (
         <>
-          <h1 onClick={() => home()}>Logo</h1>
+          <img src={logo_knn} alt="Kenzie News Network" />
+          <h1>Kenzie News Network</h1>
           <NavButtons />
           <FormControl variant="standard">
             <InputLabel htmlFor="input-with-icon-adornment">
