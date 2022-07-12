@@ -17,11 +17,11 @@ import { UserContext } from "../../contexts/UserContext";
 import BasicMenu from "../userLogedMenu";
 import SearchDrawer from "../searchDrawer";
 
-import logo_knn from '../../assets/logo_knn.png'
+import logo_knn from "../../assets/logo_knn.png";
 
 export const Header = () => {
   const { user } = useContext(UserContext);
-  
+
   const navigate = useNavigate();
 
   function login() {
@@ -35,11 +35,11 @@ export const Header = () => {
   function home() {
     navigate("/");
   }
-  function profile(){
-    navigate("/profile")
+  function profile() {
+    navigate("/profile");
   }
-  function mynews(){
-    navigate("/mynews")
+  function mynews() {
+    navigate("/mynews");
   }
 
   const [mQuery, setMQuery] = useState({
@@ -56,14 +56,18 @@ export const Header = () => {
       {mQuery && !mQuery.matches ? (
         <>
           <MenuDrawer profile={profile} />
-          <img src={logo_knn} alt="Kenzie News Network" />
-          <h1>Kenzie News Network</h1>
-          <SearchDrawer/>
+          <div className="logo--cont">
+            <img src={logo_knn} alt="Kenzie News Network" onClick={home} />
+            <h1>Kenzie News Network</h1>
+          </div>
+          <SearchDrawer />
         </>
       ) : (
         <>
-          <img src={logo_knn} alt="Kenzie News Network" />
-          <h1>Kenzie News Network</h1>
+          <div className="logo--cont">
+            <img src={logo_knn} alt="Kenzie News Network" onClick={home} />
+            <h1>Kenzie News Network</h1>
+          </div>
           <NavButtons />
           <FormControl variant="standard">
             <InputLabel htmlFor="input-with-icon-adornment">
@@ -107,12 +111,9 @@ export const Header = () => {
                   Cadastro
                 </Button>
               </>
-            )
-            :(
-              <BasicMenu mynews={mynews} profile={profile} home={home}/>
-            )
-          
-          }
+            ) : (
+              <BasicMenu mynews={mynews} profile={profile} home={home} />
+            )}
           </Box>
         </>
       )}

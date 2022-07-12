@@ -23,6 +23,8 @@ export const BoxArea = styled.form`
 
   width: 60%;
 
+  max-width: 250px;
+
   background-color: white;
 
   div {
