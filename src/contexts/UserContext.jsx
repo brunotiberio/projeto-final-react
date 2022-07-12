@@ -9,6 +9,7 @@ export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
+  const [allUsers, setAllUsers] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("@KNN-TOKEN");
@@ -86,8 +87,25 @@ export const UserProvider = ({ children }) => {
     }
   }
 
+  async function getAllUsers() {
+    try {
+      const token = localStorage.getItem("@KNN-TOKEN");
+      const parsedToken = JSON.parse(token);
+      const response = await api.get(`/users`, {
+        headers: {
+          Authorization: `Bearer ${parsedToken}`,
+        },
+      });
+      console.log(response.data);
+      setAllUsers(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
-    <UserContext.Provider value={{ userLogin, userCreate, userEdit, user }}>
+    <UserContext.Provider
+      value={{ userLogin, userCreate, userEdit, user, getAllUsers, allUsers }}
+    >
       {children}
     </UserContext.Provider>
   );
