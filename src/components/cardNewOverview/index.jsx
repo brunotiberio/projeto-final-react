@@ -18,19 +18,11 @@ export function CardNewsOverview({ article }) {
 
   function resumeDescription(content) {
     if (content.split("").length > 50) {
-      return content.split(" ").splice(0, 25).join(" ") + "...";
+      return content.split(" ").splice(0, 20).join(" ") + "...";
     }
     return content;
-  }
-
-  // function resumeName(name) {
-  //   const separado = name.split("").length
-  //   if (separado > 15) {
-  //     return name.slice(0, 10) + "..."
-  //   }
-  //   return name;
-  // }
-
+  } 
+  
   function handleNavigation(){
     navigate(`/news/${article.id}`)
   }
