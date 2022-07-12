@@ -13,16 +13,25 @@ export function CardNewsOverview({ article }) {
 
   const {getOneNewsById} = useContext(NewsContext)
 
-
   const navigate = useNavigate()
 
-  //função para dar reticencias para a descrição caso seja muito grande
   function resumeDescription(content) {
     if (content.split("").length > 50) {
-      return content.split(" ").splice(0, 15).join(" ") + "...";
+      return content.split(" ").splice(0, 25).join(" ") + "...";
     }
     return content;
   }
+
+  // function resumeName(name) {
+  //   const separado = name.split("").length
+    
+  //   if (separado > 15) {
+  //     return name.slice(0, 10) + "..."
+  //   }
+  //   return name;
+  // }
+
+  console.log(typeof article.name)
 
   function handleNavigation(){
     navigate(`/news/${article.id}`)
@@ -42,9 +51,7 @@ export function CardNewsOverview({ article }) {
 
       <Content>
         <p>
-          {article.description.split("").length > 50
-            ? resumeDescription(article.description)
-            : article.description}
+          {resumeDescription(article.description)}
         </p>
         <ContentInfo>
           <div>{article.category}</div>
@@ -52,11 +59,13 @@ export function CardNewsOverview({ article }) {
       </Content>
 
       <ContentUser>
+
         <figure>
           <img src={article.authorImg} alt={article.name} />
         </figure>
 
-        <span>{article.author}</span>
+        <span>{typeof article.name === "string" ? article.name.slice(0,10) + "..." : null }</span>
+        
       </ContentUser>
     </Container>
   );

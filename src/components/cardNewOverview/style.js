@@ -46,6 +46,11 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
 
+  width: 80%;
+  max-width: 600px;
+
+  margin-top: 2vh;
+
   p{
     font-size: 16px;
     margin-left: 5px;
@@ -85,6 +90,13 @@ export const ContentInfo = styled.div`
 export const ContentUser = styled.div`
   display: none;
   flex-direction: column;
+
+  span{
+    display: flex;
+    justify-content: center;
+
+    width: 5rem;
+  }
 
   @media (min-width: 768px) {
     display: flex;
