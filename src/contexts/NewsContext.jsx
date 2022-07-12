@@ -96,6 +96,30 @@ export const NewsProvider = ({ children }) => {
       console.log(error);
     }
   }
+  async function voteArticle(articleId, articleLikes) {
+    const likes = articleLikes+=1;
+    try { 
+      const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
+
+      const response = await api.patch(`/articles/${articleId}`, {likes:likes}, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function reportArticle(articleId, articleReports) {
+    const reports = articleReports+=1;
+    try { 
+      const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
+
+      const response = await api.patch(`/articles/${articleId}`, {reports:reports}, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <NewsContext.Provider
@@ -109,6 +133,8 @@ export const NewsProvider = ({ children }) => {
         createComment,
         createArticle,
         editArticle,
+        voteArticle,
+        reportArticle
       }}
     >
       {children}

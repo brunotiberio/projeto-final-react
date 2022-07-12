@@ -19,7 +19,7 @@ import { NewsContext } from "../../contexts/NewsContext";
 export function NewsBody({ article }) {
   const [value, setValue] = React.useState(2);
 
-  const { getComments, comments } = React.useContext(NewsContext);
+  const { getComments, comments, voteArticle, reportArticle } = React.useContext(NewsContext);
 
   React.useEffect(() => {
     if (article) {
@@ -70,18 +70,18 @@ export function NewsBody({ article }) {
               <Button
                 sx={{ width: 100, background: "white", color: "#047F9E" }}
                 variant="contained"
-                onClick={() => console.log("like")}
+                onClick={() => voteArticle(article?.id, article?.likes)}
               >
                 <FavoriteIcon />
-                Favorite
+                {article?.likes}
               </Button>
               <Button
                 sx={{ width: 100, background: "white", color: "red" }}
                 variant="contained"
-                onClick={() => console.log("report")}
+                onClick={() => reportArticle(article?.id, article?.reports)}
               >
                 <FlagIcon />
-                Fake
+                {article?.reports}
               </Button>
             </NewsButtons>
           </NewsRatings>
