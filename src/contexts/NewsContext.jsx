@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { createContext, useState } from "react";
 import { api } from "../services/api";
 import { UserContext } from "./UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const NewsContext = createContext([]);
 
@@ -13,6 +14,8 @@ export const NewsProvider = ({ children }) => {
   const [filteredNews, setFilteredNews] = useState();
 
   const { user } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   async function getAllNews() {
     try {
@@ -67,7 +70,7 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function createArticle(formData, user) {
+  async function createArticle(formData, user, setSuccess) {
     const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
 
     const body = {
@@ -85,6 +88,13 @@ export const NewsProvider = ({ children }) => {
       const response = await api.post(`/articles`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
+      setSuccess(true)
+      
+      setTimeout(()=>{
+        setSuccess(false)
+        navigate("/")
+      }, 3000)
     } catch (error) {
       console.log(error);
     }
@@ -107,6 +117,27 @@ export const NewsProvider = ({ children }) => {
       console.log(error);
     }
   }
+
+  async function deleteArticle(id, setSuccess){
+    try {
+      const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
+
+      const response = await api.delete(`/articles/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setSuccess(true)
+
+      setTimeout(()=>{
+        setSuccess(false)
+        navigate("/")
+      }, 2000)
+    } catch (error) {
+
+      console.log(error)
+    }
+  }
+
   async function voteArticle(articleId, articleLikes) {
     const likes = articleLikes+=1;
     try { 
@@ -119,6 +150,7 @@ export const NewsProvider = ({ children }) => {
       console.log(error);
     }
   }
+
   async function reportArticle(articleId, articleReports) {
     const reports = articleReports+=1;
     try { 
@@ -146,6 +178,7 @@ export const NewsProvider = ({ children }) => {
         editArticle,
         voteArticle,
         reportArticle,
+        deleteArticle
         filter,
         setFilter,
         filteredNews, 

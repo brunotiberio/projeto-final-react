@@ -22,14 +22,6 @@ export function CardNewsOverview({ article }) {
     return content;
   }
 
-  // function resumeName(name) {
-  //   const separado = name.split("").length
-  //   if (separado > 15) {
-  //     return name.slice(0, 10) + "..."
-  //   }
-  //   return name;
-  // }
-
   function handleNavigation(){
     navigate(`/news/${article.id}`)
   }

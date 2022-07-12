@@ -20,8 +20,10 @@ import SearchDrawer from "../searchDrawer";
 import logo_knn from "../../assets/logo_knn.png";
 
 export const Header = () => {
+
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+
   function login() {
     navigate("/login");
   }
