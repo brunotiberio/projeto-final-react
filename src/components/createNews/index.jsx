@@ -108,13 +108,6 @@ export default function CreateNews() {
 
             <Button variant="contained" type="submit" style={{width: '95%', marginTop: 20, marginBottom: 20}}> Criar notícia </Button>
         </form>
-        {
-            success? (
-                <SuccessMessage> Notícia criada com sucesso</SuccessMessage>
-            ) : (
-                null
-            )
-        }
     </FormContainer>
     </>
   )

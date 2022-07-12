@@ -1,22 +1,15 @@
 import React from 'react'
 import { useForm, useInput } from "lx-react-form";
+
 import { Button, TextField } from '@mui/material'
+
 import { FormContainer, InputsContainer } from './style'
 import { useContext } from 'react';
 import { NewsContext } from '../../contexts/NewsContext';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
-export default function EditNews() {
+export default function EditNews(article) {
 
-    const {editArticle, getOneNewsById, article} = useContext(NewsContext)
-
-    const {id} = useParams();
-
-    useEffect(()=>{
-        getOneNewsById(id)
-    },[])
-
+    const {editArticle} = useContext(NewsContext)
 
     const title = useInput({
         name: 'title',
@@ -42,7 +35,7 @@ export default function EditNews() {
         clearFields: true,
         formFields: [title, urlToImage, description, content],
         submitCallback: (formData) => {
-            editArticle(formData, id)
+            editArticle(formData)
         }
     })
 
