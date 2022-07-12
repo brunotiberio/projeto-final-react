@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router";
 import {
   StyledButtomsContainer,
   StyledContactsContainer,
@@ -11,7 +12,24 @@ import {
 import "./style.css";
 
 function CardJournalist() {
+  const navigate = useNavigate();
   const { user } = useContext(UserContext);
+
+  function editProfile() {
+    navigate("/profile/edit");
+  }
+
+  if (user?.type === "content creator") {
+    user.type = "Criador de Conteúdo";
+  }
+
+  if (user?.type === "company") {
+    user.type = "Empresa Parceira";
+  }
+
+  if (user?.type === "reader") {
+    user.type = "Leitor";
+  }
 
   return (
     <StyledProfileJournalistContainer>
@@ -64,7 +82,7 @@ function CardJournalist() {
         </StyledContactsContainer>
       </div>
       <StyledButtomsContainer>
-        <Button variant="contained" size="small">
+        <Button variant="contained" size="small" onClick={editProfile}>
           Editar Perfil
         </Button>
       </StyledButtomsContainer>
