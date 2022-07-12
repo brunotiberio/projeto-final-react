@@ -17,14 +17,16 @@ import { CardComments } from "../cardComments";
 import { NewsContext } from "../../contexts/NewsContext";
 
 export function NewsBody({ article }) {
-
   const [value, setValue] = React.useState(2);
 
   const { getComments, comments } = React.useContext(NewsContext);
 
   React.useEffect(() => {
-    getComments(article?.id);
-  }, [comments]);
+    if (article) {
+      getComments(article.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [article]);
 
   return (
     <>
@@ -86,7 +88,10 @@ export function NewsBody({ article }) {
 
           <PostComments />
 
-          {comments && comments.map((comment) => (<CardComments comment={comment} key={comment.id} />))}
+          {comments &&
+            comments.map((comment) => (
+              <CardComments comment={comment} key={comment.id} />
+            ))}
         </StyledArticle>
       )}
     </>
