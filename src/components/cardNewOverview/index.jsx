@@ -24,7 +24,6 @@ export function CardNewsOverview({ article }) {
 
   // function resumeName(name) {
   //   const separado = name.split("").length
-    
   //   if (separado > 15) {
   //     return name.slice(0, 10) + "..."
   //   }
@@ -63,7 +62,7 @@ export function CardNewsOverview({ article }) {
         </figure>
 
         <span>{typeof article.name === "string" ? article.name.slice(0,10) + "..." : null }</span>
-        
+
       </ContentUser>
     </Container>
   );
