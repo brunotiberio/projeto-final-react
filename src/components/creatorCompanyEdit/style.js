@@ -10,7 +10,6 @@ export const StyledUserCard = styled.div`
 
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 4px;
-  
 `;
 export const StyledUserTop = styled.div`
   display: flex;
@@ -21,7 +20,6 @@ export const StyledUserTop = styled.div`
       width: 100%;
     }
   }
-
 `;
 export const StyledUserOptions = styled.div`
   display: flex;
