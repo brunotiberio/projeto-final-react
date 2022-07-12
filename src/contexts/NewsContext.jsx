@@ -58,7 +58,7 @@ export const NewsProvider = ({ children }) => {
       const response = await api.post(`/comments`, resp, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      getComments();
+      getComments(article?.id);
     } catch (error) {
       console.log(error);
     }
