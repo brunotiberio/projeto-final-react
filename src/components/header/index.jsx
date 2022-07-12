@@ -21,7 +21,7 @@ import logo_knn from "../../assets/logo_knn.png";
 
 export const Header = () => {
   const { user } = useContext(UserContext);
-  console.log(user)
+  //console.log(user)
   const navigate = useNavigate();
 
   function login() {
@@ -29,8 +29,8 @@ export const Header = () => {
   }
   function logOut() {
     navigate("/login");
-    localStorage.removeItem("@KNN-TOKEN")
-    localStorage.removeItem("@KNN-ID")
+    localStorage.removeItem("@KNN-TOKEN");
+    localStorage.removeItem("@KNN-ID");
   }
 
   function register() {
@@ -46,13 +46,12 @@ export const Header = () => {
   function mynews() {
     navigate("/mynews");
   }
-  function createNews(){
-    navigate("/mynews/create")
+  function createNews() {
+    navigate("/mynews/create");
   }
-  function contentCreators(){
-    navigate("/content-creators")
+  function contentCreators() {
+    navigate("/content-creators");
   }
-
 
   const [mQuery, setMQuery] = useState({
     matches: window.innerWidth > 800 ? true : false,
@@ -124,7 +123,15 @@ export const Header = () => {
                 </Button>
               </>
             ) : (
-              <BasicMenu user={user} logOut={logOut} contentCreators={contentCreators} mynews={mynews} createNews={createNews} profile={profile} home={home} />
+              <BasicMenu
+                user={user}
+                logOut={logOut}
+                contentCreators={contentCreators}
+                mynews={mynews}
+                createNews={createNews}
+                profile={profile}
+                home={home}
+              />
             )}
           </Box>
         </>
