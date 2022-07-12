@@ -5,10 +5,12 @@ import { Button, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 
 import { FormContainer, InputsContainer, StyledFormControl, StyledInput } from './style'
 import { NewsContext } from '../../contexts/NewsContext';
+import { UserContext } from '../../contexts/UserContext';
 
 export default function CreateNews() {
 
     const {createArticle} = useContext(NewsContext)
+    const {user} = useContext(UserContext) 
 
 
     const title = useInput({
@@ -35,7 +37,7 @@ export default function CreateNews() {
         clearFields: true,
         formFields: [title, category, urlToImage, description, content],
         submitCallback: (formData) => {
-            createArticle(formData)
+            createArticle(formData, user)
         }
     })
 

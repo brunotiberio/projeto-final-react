@@ -7,24 +7,28 @@ import { FormContainer, InputsContainer } from './style'
 import { useContext } from 'react';
 import { NewsContext } from '../../contexts/NewsContext';
 
-export default function EditNews() {
+export default function EditNews(article) {
 
     const {editArticle} = useContext(NewsContext)
 
     const title = useInput({
-        name: 'title'
+        name: 'title',
+        initialValue: article.title
     })
 
     const urlToImage = useInput({
-        name: 'urlToImage'
+        name: 'urlToImage',
+        initialValue: article.urlToImage
     })
 
     const description = useInput({
-        name: 'description'
+        name: 'description',
+        initialValue: article.description
     })
 
     const content = useInput({
-        name: 'content'
+        name: 'content',
+        initialValue: article.content
     })
 
     const form = useForm({
@@ -88,7 +92,7 @@ export default function EditNews() {
             />
             
 
-            <Button variant="contained" type="submit" style={{width: '95%', marginTop: 20}}> Criar notícia </Button>
+            <Button variant="contained" type="submit" style={{width: '95%', marginTop: 20}}> Salvar alterações </Button>
             <Button variant="contained" type="submit" style={{width: '95%', marginTop: 20, marginBottom: 20}}> Voltar </Button>
         </form>
     </FormContainer>

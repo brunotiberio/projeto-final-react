@@ -10,7 +10,7 @@ export const NewsProvider = ({ children }) => {
   const [article, setArticle] = useState();
   const [comments, setComments] = useState();
 
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
 
   async function getAllNews() {
     try {
@@ -37,7 +37,6 @@ export const NewsProvider = ({ children }) => {
       const response = await api.get(`/articles/${id}?_embed=comments`);
 
       setComments(response.data.comments);
-
     } catch (error) {
       console.log(error);
     }
@@ -48,8 +47,10 @@ export const NewsProvider = ({ children }) => {
       ownerId: userId,
       articleId: articleId,
       content: body,
-      userImg: user.userImg || "https://thumbs.dreamstime.com/z/imagem-nima-do-perfil-do-homem-34487140.jpg",
-      username: user.name
+      userImg:
+        user.userImg ||
+        "https://thumbs.dreamstime.com/z/imagem-nima-do-perfil-do-homem-34487140.jpg",
+      username: user.name,
     };
 
     try {
@@ -64,12 +65,16 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function createArticle(formData) {
+  async function createArticle(formData, user) {
     const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
 
     const body = {
       ...formData,
+      name: user.name,
       authorId: authorId,
+      authorImg: user.avatar,
+      likes: 0,
+      reports: 0,
     };
 
     try {

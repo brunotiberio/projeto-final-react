@@ -8,6 +8,8 @@ export const Container = styled.div`
 
     border-radius: 10px;
 
+    overflow-y: auto;
+
     width: 90%;
     height: 95%;
 
