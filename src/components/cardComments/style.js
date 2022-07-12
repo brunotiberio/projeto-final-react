@@ -6,6 +6,8 @@ export const Container = styled.ul`
     justify-content: center;
     align-items: center;
 
+    overflow-y: auto;
+
     width: 95%;
 
     margin: 10px auto;

@@ -66,4 +66,17 @@ export const NewsButtons=styled.div`
 
 `
 
+export const Container = styled.ul`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: auto;
+
+    width: 95%;
+    margin: 10px auto;
+
+    gap: 15px;
+`
+
 

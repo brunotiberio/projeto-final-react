@@ -4,7 +4,6 @@ import { CommentCard, Container, Content, UserInfo } from "./style"
 export function CardComments({comment}){
 
     return(
-        <Container>
             <CommentCard>
 
                 <UserInfo>
@@ -17,6 +16,5 @@ export function CardComments({comment}){
                 </Content>
 
             </CommentCard>
-        </Container>
     )
 }

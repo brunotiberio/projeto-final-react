@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { createContext, useState } from "react";
 import { api } from "../services/api";
+import { UserContext } from "./UserContext";
 
 export const NewsContext = createContext([]);
 
@@ -9,6 +10,7 @@ export const NewsProvider = ({ children }) => {
   const [article, setArticle] = useState();
   const [comments, setComments] = useState();
 
+  const {user} = useContext(UserContext)
 
   async function getAllNews() {
     try {
@@ -46,6 +48,8 @@ export const NewsProvider = ({ children }) => {
       ownerId: userId,
       articleId: articleId,
       content: body,
+      userImg: user.userImg || "https://thumbs.dreamstime.com/z/imagem-nima-do-perfil-do-homem-34487140.jpg",
+      username: user.name
     };
 
     try {

@@ -47,16 +47,16 @@ export function CardNewsOverview({ article }) {
             : article.description}
         </p>
         <ContentInfo>
-          <div>{article.source.category}</div>
+          <div>{article.category}</div>
         </ContentInfo>
       </Content>
 
       <ContentUser>
         <figure>
-          <img src="foto da pessoa" alt={article.source.name} />
+          <img src={article.authorImg} alt={article.name} />
         </figure>
 
-        <span>{article.source.author}</span>
+        <span>{article.author}</span>
       </ContentUser>
     </Container>
   );
