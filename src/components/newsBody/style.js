@@ -5,6 +5,7 @@ export const StyledArticle = styled.div`
     flex-direction: column;
 
     overflow-y: auto;
+    
 
     width: 95vw;
     height: 98%;
@@ -15,6 +16,9 @@ export const StyledArticle = styled.div`
     
     color:#FFFFFF;
     background-color: #281E1E;
+
+
+
 
     section{
         display: flex;
@@ -60,31 +64,10 @@ export const Content = styled.div`
 `
 export const NewsRatings=styled.div`
 
+    
 `
 export const NewsButtons=styled.div`
 
-`
-
-export const NewsButtonCreator = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: none;   
-    border-radius: 10px;
-
-    width: 5rem;
-    height: 2rem;
-
-`
-
-export const NewsButtonContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    
-    gap: 25px;
-
-    width: 100%;
 `
 
 export const Container = styled.ul`

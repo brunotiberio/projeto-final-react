@@ -2,8 +2,6 @@ import {
   AuthContent,
   Container,
   Content,
-  NewsButtonContainer,
-  NewsButtonCreator,
   NewsButtons,
   NewsRatings,
   StyledArticle,
@@ -18,20 +16,12 @@ import Typography from "@mui/material/Typography";
 import { PostComments } from "../postComments";
 import { CardComments } from "../cardComments";
 import { NewsContext } from "../../contexts/NewsContext";
-import { UserContext } from "../../contexts/UserContext";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { DeleteModal } from "../deleteModal";
 
 export function NewsBody({ article }) {
   const [value, setValue] = React.useState(2);
   const [id, setId] = React.useState()
 
-  const navigate = useNavigate();
-
-  const { getComments, comments, voteArticle, reportArticle } =
-    React.useContext(NewsContext);
-  const { user } = useContext(UserContext);
+  const { getComments, comments, voteArticle, reportArticle } = React.useContext(NewsContext);
 
   React.useEffect(() => {
     if (article) {
@@ -61,7 +51,7 @@ export function NewsBody({ article }) {
           <section>{article.content}</section>
 
           <AuthContent>
-            <span>Redigido por {article.name}</span>
+            <span>Redigido por {article.author}</span>
           </AuthContent>
 
           {user?.type === "content creator" && user?.id === article.authorId ? (
@@ -117,76 +107,29 @@ export function NewsBody({ article }) {
               <Box
                 sx={{
                   "& > legend": { mt: 2 },
+
                 }}
+              />
+            </Box>
+            <NewsButtons>
+              <Button
+                sx={{ width: 100, background: "white", color: "#047F9E" }}
+                variant="contained"
+                onClick={() => voteArticle(article?.id, article?.likes)}
               >
-                <Typography component="legend">Nota</Typography>
-                <Rating
-                  name="simple-controlled"
-                  value={value}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                  }}
-                />
-              </Box>
-
-              <NewsButtons>
-                <Button
-                  sx={{ width: 100, background: "white", color: "#047F9E" }}
-                  variant="contained"
-                  onClick={() => voteArticle(article?.id, article?.likes)}
-                >
-                  <FavoriteIcon />
-                  {article?.likes}
-                </Button>
-
-                <Button
-                  sx={{ width: 100, background: "white", color: "red" }}
-                  variant="contained"
-                  onClick={() => reportArticle(article?.id, article?.reports)}
-                >
-                  <FlagIcon />
-                  {article?.reports}
-                </Button>
-              </NewsButtons>
-            </NewsRatings>
-          ) : (
-            <NewsRatings>
-              <Box
-                sx={{
-                  "& > legend": { mt: 2 },
-                }}
+                <FavoriteIcon />
+                {article?.likes}
+              </Button>
+              <Button
+                sx={{ width: 100, background: "white", color: "red" }}
+                variant="contained"
+                onClick={() => reportArticle(article?.id, article?.reports)}
               >
-                <Typography component="legend">Nota</Typography>
-                <Rating
-                  name="simple-controlled"
-                  value={value}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                  }}
-                />
-              </Box>
-
-              <NewsButtons>
-                <Button
-                  sx={{ width: 100, background: "white", color: "#047F9E" }}
-                  variant="contained"
-                  onClick={() => voteArticle(article?.id, article?.likes)}
-                >
-                  <FavoriteIcon />
-                  {article?.likes}
-                </Button>
-
-                <Button
-                  sx={{ width: 100, background: "white", color: "red" }}
-                  variant="contained"
-                  onClick={() => reportArticle(article?.id, article?.reports)}
-                >
-                  <FlagIcon />
-                  {article?.reports}
-                </Button>
-              </NewsButtons>
-            </NewsRatings>
-          )}
+                <FlagIcon />
+                {article?.reports}
+              </Button>
+            </NewsButtons>
+          </NewsRatings>
 
           <PostComments />
 
@@ -198,7 +141,6 @@ export function NewsBody({ article }) {
           </Container>
         </StyledArticle>
       )}
-   
     </>
   );
 }

@@ -1,30 +1,33 @@
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
-import { useContext } from "react";
-import { NewsContext } from "../../contexts/NewsContext";
 import { StyledHeaderList } from "../header/style";
 export const NavButtons = () => {
-
-  const { filter , setFilter }  = useContext(NewsContext)
-  function handleClick(type) {
-    setFilter(type)
+  function handleClick(event) {
+    event.preventDefault();
+    console.info("You clicked a breadcrumb.");
   }
   return (
-    <StyledHeaderList role="presentation">
+    <StyledHeaderList role="presentation" onClick={handleClick}>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" onClick={()=>handleClick("saúde")}>
+        {/* <Link underline="hover" color="inherit" href="/">
+                Novas Noticias
+              </Link>
+              <Link underline="hover" color="inherit" href="/">
+                Mais Votadas
+              </Link> */}
+        <Link underline="hover" color="inherit" href="/">
           Saúde
         </Link>
-        <Link underline="hover" color="inherit" onClick={()=>handleClick("tecnologia")}>
+        <Link underline="hover" color="inherit" href="/">
           Tecnologia
         </Link>
-        <Link underline="hover" color="inherit" onClick={()=>handleClick("esporte")}>
+        <Link underline="hover" color="inherit" href="/">
           Esporte
         </Link>
-        <Link underline="hover" color="inherit" onClick={()=>handleClick("entretenimento")}>
+        <Link underline="hover" color="inherit" href="/">
           Entretenimento
         </Link>
-        <Link underline="hover" color="inherit" onClick={()=>handleClick("gastronomia")}>
+        <Link underline="hover" color="inherit" href="/">
           Gastronomia
         </Link>
       </Breadcrumbs>

@@ -3,12 +3,14 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
 
+
     max-width: 1100px;
 
     h2{
         margin-top: 20px;
         text-align: center;
     }
+
 
     width: 90vw;
 
@@ -53,6 +55,7 @@ export const StyledFormControl = styled(FormControl)`
     }
     
 `
+
 export const SuccessMessage = styled.div`
     display: flex;
     justify-content: center;
@@ -70,3 +73,4 @@ export const SuccessMessage = styled.div`
     font-weight: 600;
     font-size: 36;
 `
+
