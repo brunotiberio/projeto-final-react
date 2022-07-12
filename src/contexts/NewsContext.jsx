@@ -178,7 +178,7 @@ export const NewsProvider = ({ children }) => {
         editArticle,
         voteArticle,
         reportArticle,
-        deleteArticle
+        deleteArticle,
         filter,
         setFilter,
         filteredNews, 
