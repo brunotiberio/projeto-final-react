@@ -1,27 +1,28 @@
-import Pug from "./../../assets/PUG.jpg";
-
 import {
   StyledUserCard,
   StyledUserTop,
   StyledUserOptions,
   StyledSaveChanges,
   StyledTitleAdress,
+  StyledFormControl,
 } from "./style";
 
-import Avatar from "@mui/material/Avatar";
+
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-import { useForm, useInput } from "lx-react-form";
+import { useForm, useInput, useSelect } from "lx-react-form";
 
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { InputLabel, MenuItem, Select } from "@mui/material";
 
 function CreatorCompanyEdit({ type }) {
+  const avatar = useInput({name: 'avatar'})
   const name = useInput({ name: "name" });
   const phone = useInput({ name: "phone" });
   const cep = useInput({ name: "cep" });
-  const state = useInput({ name: "state" });
+  const state = useSelect({ name: "state" });
   const district = useInput({ name: "district" });
   const city = useInput({ name: "city" });
   const street = useInput({ name: "street" });
@@ -31,9 +32,10 @@ function CreatorCompanyEdit({ type }) {
 
   const form = useForm({
     clearFields: true,
-    formFields: [name, phone, cep, state, district, city, street, number],
+    formFields: [avatar, name, phone, cep, state, district, city, street, number],
     submitCallback: (formData) => {
       const data = {
+        avatar: avatar.value,
         name: name.value,
         data: {
           phone: phone.value,
@@ -54,7 +56,12 @@ function CreatorCompanyEdit({ type }) {
     <StyledUserCard>
       <form onSubmit={form.handleSubmit}>
         <StyledUserTop>
-          <Avatar alt="Remy Sharp" src={Pug} />
+        <TextField
+            {...avatar.inputProps}
+            label="Imagem do perfil (url)"
+            placeholder='URL da imagem'
+            variant="standard"
+          />
 
           <TextField
             {...name.inputProps}
@@ -72,7 +79,40 @@ function CreatorCompanyEdit({ type }) {
         <StyledTitleAdress>Endereço</StyledTitleAdress>
         <StyledUserOptions>
           <TextField {...cep.inputProps} label="CEP" variant="standard" />
-          <TextField {...state.inputProps} label="Estado" variant="standard" />
+
+          <StyledFormControl style={{width: '100%', marginTop: 20}}>
+                    <InputLabel>Estado</InputLabel>
+                    <Select {...state.inputProps} label="Categoria" variant="standard">
+                        <MenuItem value="Acre">Acre</MenuItem>
+                        <MenuItem value="Alagoas">Alagoas</MenuItem>
+                        <MenuItem value="Amapá">Amapá</MenuItem>
+                        <MenuItem value="Amazonas">Amazonas</MenuItem>
+                        <MenuItem value="Bahia">Bahia</MenuItem>
+                        <MenuItem value="Ceará">Ceará</MenuItem>
+                        <MenuItem value="Distrito Federal ">Distrito Federal </MenuItem>
+                        <MenuItem value="Espírito Santo">Espírito Santo</MenuItem>
+                        <MenuItem value="Goiás">Goiás</MenuItem>
+                        <MenuItem value="Maranhão">Maranhão</MenuItem>
+                        <MenuItem value="Mato Grosso">Mato Grosso</MenuItem>
+                        <MenuItem value="Mato Grosso do sul">Mato Grosso do sul</MenuItem>
+                        <MenuItem value="Minas Gerais">Minas Gerais</MenuItem>
+                        <MenuItem value="Pará">Pará</MenuItem>
+                        <MenuItem value="Paraíba">Paraíba</MenuItem>
+                        <MenuItem value="Paraná">Paraná</MenuItem>
+                        <MenuItem value="Pernambuco">Pernambuco</MenuItem>
+                        <MenuItem value="Piauí">Piauí</MenuItem>
+                        <MenuItem value="Rio de Janeiro">Rio de Janeiro</MenuItem>
+                        <MenuItem value="Rio Grande do Norte">Rio Grande do Norte</MenuItem>
+                        <MenuItem value="Rio Grande do Sul">Rio Grande do Sul</MenuItem>
+                        <MenuItem value="Rondônia">Rondônia</MenuItem>
+                        <MenuItem value="Roraima">Roraima</MenuItem>
+                        <MenuItem value="Santa Catarina">Santa Catarina</MenuItem>
+                        <MenuItem value="São Paulo">São Paulo</MenuItem>
+                        <MenuItem value="Sergipe">Sergipe</MenuItem>
+                        <MenuItem value="Tocantins">Tocantins</MenuItem>
+                    </Select>                
+                </StyledFormControl> 
+          
           <TextField
             {...district.inputProps}
             label="Bairro"

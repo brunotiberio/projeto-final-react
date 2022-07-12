@@ -1,3 +1,4 @@
+import { FormControl } from "@mui/material";
 import styled from "styled-components";
 export const StyledUserCard = styled.div`
   display: flex;
@@ -61,3 +62,11 @@ export const StyledTitleAdress = styled.div`
   font-weight:bolder;
   font-size:1.5rem;
 `;
+
+export const StyledFormControl = styled(FormControl)`
+    
+    @media (min-width: 1000px){
+        width: 10px;
+    }
+    
+`
