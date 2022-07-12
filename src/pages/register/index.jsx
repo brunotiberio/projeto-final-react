@@ -2,6 +2,7 @@ import undraw_appreciation_re_pyhy from "../../assets/undraw_appreciation_re_pyh
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 import "./styles.css";
+import { TitleContainer, Title } from "./style"
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function RegisterPage() {
   }
 
   return (
-    <div className="temp--cont--reg">
+    <TitleContainer>
       <div className="temp--cont--int">
         <img
           className="img--invertida"
@@ -23,7 +24,7 @@ function RegisterPage() {
           alt="imagem tela de registro"
         />
         <div>
-          <h2>REGISTRE-SE</h2>
+          <Title>Registre-se</Title>
           <h3> Junte-se a nós e obtenha mais funcionalidades na plataforma</h3>
         </div>
         <img
@@ -66,7 +67,7 @@ function RegisterPage() {
           </Button>
         </div>
       </div>
-    </div>
+    </TitleContainer>
   );
 }
 
