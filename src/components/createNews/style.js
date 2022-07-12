@@ -55,8 +55,18 @@ export const StyledFormControl = styled(FormControl)`
 `
 export const SuccessMessage = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+
     width: 15rem;
+    height:2rem;
+
     margin: 10px auto;
 
-    background-color: aquamarine;
+    background-color: lightgreen;
+
+    font-weight: 600;
+    font-size: 36;
 `
