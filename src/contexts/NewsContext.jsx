@@ -100,7 +100,7 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function editArticle(formData) {
+  async function editArticle(formData, id) {
     const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
 
     const body = {
@@ -110,7 +110,7 @@ export const NewsProvider = ({ children }) => {
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-      const response = await api.patch(`/articles`, body, {
+      const response = await api.patch(`/articles/${id}`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
     } catch (error) {
@@ -178,7 +178,7 @@ export const NewsProvider = ({ children }) => {
         editArticle,
         voteArticle,
         reportArticle,
-        deleteArticle
+        deleteArticle,
         filter,
         setFilter,
         filteredNews, 

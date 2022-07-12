@@ -25,7 +25,7 @@ import { DeleteModal } from "../deleteModal";
 
 export function NewsBody({ article }) {
   const [value, setValue] = React.useState(2);
-  const [modal, setModal] = React.useState(false);
+  const [id, setId] = React.useState()
 
   const navigate = useNavigate();
 
@@ -36,6 +36,7 @@ export function NewsBody({ article }) {
   React.useEffect(() => {
     if (article) {
       getComments(article.id);
+      setId(article.id)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
@@ -66,7 +67,7 @@ export function NewsBody({ article }) {
           {user?.type === "content creator" && user?.id === article.authorId ? (
             <NewsButtonContainer>
               <NewsButtonCreator
-                onClick={()=>navigate(`/mynews/edit`)}
+                onClick={()=>navigate(`/mynews/edit/${id}`)}
               >
                 Editar
               </NewsButtonCreator>
