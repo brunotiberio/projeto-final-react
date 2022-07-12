@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createContext, useState } from "react";
 import { api } from "../services/api";
 
@@ -7,6 +8,7 @@ export const NewsProvider = ({ children }) => {
   const [allNews, setAllNews] = useState();
   const [article, setArticle] = useState();
   const [comments, setComments] = useState();
+
 
   async function getAllNews() {
     try {
@@ -28,11 +30,12 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function getComments() {
+  async function getComments(id) {
     try {
-      const response = await api.get(`/articles/3?_embed=comments`);
+      const response = await api.get(`/articles/${id}?_embed=comments`);
 
       setComments(response.data.comments);
+
     } catch (error) {
       console.log(error);
     }
@@ -51,6 +54,7 @@ export const NewsProvider = ({ children }) => {
       const response = await api.post(`/comments`, resp, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      getComments();
     } catch (error) {
       console.log(error);
     }
