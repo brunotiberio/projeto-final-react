@@ -9,6 +9,7 @@ import RegisterPage from "../pages/register";
 import { SingleArticlePage } from "../pages/singleArticlePage";
 import LoginPage from "../pages/login";
 import CreatorCompanyEditPage from "../pages/creatorCompanyEditPage";
+import AllJournalists from "../pages/todos-jornalistas";
 
 function Paths() {
   return (
@@ -31,6 +32,7 @@ function Paths() {
         element={<CreatorCompanyEditPage />}
       />
       <Route exact path={"/mynews/create"} element={<CreateNewsPage />} />
+      <Route exact path={"/content-creators"} element={<AllJournalists />} />
     </Routes>
   );
 }
