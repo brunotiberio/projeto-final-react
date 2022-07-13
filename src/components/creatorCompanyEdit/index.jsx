@@ -9,6 +9,7 @@ import {
   StyledTitleData,
   StyledTextField,
   StyledCepStateContainer,
+  SuccessMessage,
 } from "./style";
 
 import Button from "@mui/material/Button";
@@ -28,7 +29,6 @@ function CreatorCompanyEdit({ type }) {
   const district = useInput({ name: "district" });
   const city = useInput({ name: "city" });
   const street = useInput({ name: "street" });
-  const number = useInput({ name: "number" });
 
   const { userEdit, user } = useContext(UserContext);
 
@@ -45,7 +45,6 @@ function CreatorCompanyEdit({ type }) {
       district,
       city,
       street,
-      number,
     ],
     submitCallback: (formData) => {
       const data = {
@@ -62,14 +61,14 @@ function CreatorCompanyEdit({ type }) {
           },
         },
       };
-      console.log(data);
+     
       userEdit(user?.id, data, setSuccess);
     },
   });
   return (
     <StyledUserCard>
-      <form onSubmit={form.handleSubmit}>
         <StyledTitleData>Dados Pessoais</StyledTitleData>
+      <form onSubmit={form.handleSubmit}>
         <StyledUserTop>
 
         <StyledTextField
@@ -81,23 +80,20 @@ function CreatorCompanyEdit({ type }) {
 
           <StyledUrlPhoneContainer>
 
-          <StyledTextField
-            {...phone.inputProps}
-            label="Alterar telefone"
-            placeholder="(00) 0 00000-0000"
-            variant="standard"
-          />
+            <StyledTextField
+              {...phone.inputProps}
+              label="Alterar telefone"
+              placeholder="(00) 0 00000-0000"
+              variant="standard"
+            />
 
-          <StyledTextField
-            {...avatar.inputProps}
-            label="Imagem do perfil (url)"
-            placeholder="URL da imagem"
-            variant="standard"
-          />
-
+            <StyledTextField
+              {...avatar.inputProps}
+              label="Imagem do perfil (url)"
+              placeholder="URL da imagem"
+              variant="standard"
+            />
           </StyledUrlPhoneContainer>
-
-
         </StyledUserTop>
         <StyledTitleAdress>Endereço</StyledTitleAdress>
         <StyledUserOptions>
@@ -162,7 +158,9 @@ function CreatorCompanyEdit({ type }) {
           
         </StyledUserOptions>
         {success && (
-          <p>As alterações foram salvas, em breve você será direcionado</p>
+          <SuccessMessage>
+            <p>As alterações foram salvas, em breve você será direcionado</p>
+          </SuccessMessage>
         )}
         <StyledSaveChanges>
           <Button variant="contained" type="submit">
