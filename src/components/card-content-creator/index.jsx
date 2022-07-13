@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 
 import "./styles.css";
 
-function ContentCreator({ name, avatar, city, state, id }) {
+function ContentCreator({ name, avatar, city, state, email, phone, id }) {
   const { allNews, getAllNews, article } = useContext(NewsContext);
 
   useEffect(() => {
@@ -23,7 +23,9 @@ function ContentCreator({ name, avatar, city, state, id }) {
       ) : (
         <p>Não Informado</p>
       )}
-      <p>{filtrados?.length}</p>
+      <p>{email}</p>
+      <p>{phone}</p>
+      <p>Postagens: {filtrados?.length}</p>
     </div>
   );
 }
