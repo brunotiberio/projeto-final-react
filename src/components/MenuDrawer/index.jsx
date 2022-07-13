@@ -11,14 +11,20 @@ import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { NewsContext } from "../../contexts/NewsContext";
+import { useNavigate } from "react-router-dom";
 
-export default function MenuDrawer({ logOut, contentCreators,createNews,profile}) {
+
+export default function MenuDrawer({ logOut, contentCreators,createNews,profile, login, register}) {
+  const navigate = useNavigate()
   const { user } = useContext(UserContext);
   const { setFilter }  = useContext(NewsContext)
   const [state, setState] = React.useState({
     left: false,
   });
   function handleClick(type){
+    if(type==="home"){
+      navigate('/')
+    }
     setFilter(type)
   }
   const toggleDrawer = (anchor, open) => (event) => {
@@ -46,6 +52,7 @@ export default function MenuDrawer({ logOut, contentCreators,createNews,profile}
           "esporte",
           "entretenimento",
           "gastronomia",
+          "home"
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -103,6 +110,20 @@ export default function MenuDrawer({ logOut, contentCreators,createNews,profile}
         <ListItem key={"logOut"} disablePadding>
           <ListItemButton>
             <ListItemText primary={"logOut"} onClick={logOut} />
+          </ListItemButton>
+        </ListItem>
+      </List>
+      )}
+      {!user && (
+        <List>
+        <ListItem key={"login"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"login"} onClick={login} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={"cadastro"} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={"cadastro"} onClick={register} />
           </ListItemButton>
         </ListItem>
       </List>

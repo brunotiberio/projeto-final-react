@@ -64,7 +64,7 @@ export const Header = () => {
     <StyledHeader>
       {mQuery && !mQuery.matches ? (
         <>
-          <MenuDrawer logOut={logOut} createNews={createNews} contentCreators={contentCreators} profile={profile} />
+          <MenuDrawer login={login} register={register} logOut={logOut} createNews={createNews} contentCreators={contentCreators} profile={profile} />
           <div className="logo--cont" >
             <img src={logo_knn} alt="Kenzie News Network"/>
             <h1>Kenzie News Network</h1>
