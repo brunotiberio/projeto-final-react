@@ -94,35 +94,33 @@ function CreatorCompanyEdit({ type }) {
           <StyledFormControl style={{ width: "100%", marginTop: 20 }}>
             <InputLabel>Estado</InputLabel>
             <Select {...state.inputProps} label="Categoria" variant="standard">
-              <MenuItem value="Acre">Acre</MenuItem>
-              <MenuItem value="Alagoas">Alagoas</MenuItem>
-              <MenuItem value="Amapá">Amapá</MenuItem>
-              <MenuItem value="Amazonas">Amazonas</MenuItem>
-              <MenuItem value="Bahia">Bahia</MenuItem>
-              <MenuItem value="Ceará">Ceará</MenuItem>
-              <MenuItem value="Distrito Federal ">Distrito Federal </MenuItem>
-              <MenuItem value="Espírito Santo">Espírito Santo</MenuItem>
-              <MenuItem value="Goiás">Goiás</MenuItem>
-              <MenuItem value="Maranhão">Maranhão</MenuItem>
-              <MenuItem value="Mato Grosso">Mato Grosso</MenuItem>
-              <MenuItem value="Mato Grosso do sul">Mato Grosso do sul</MenuItem>
-              <MenuItem value="Minas Gerais">Minas Gerais</MenuItem>
-              <MenuItem value="Pará">Pará</MenuItem>
-              <MenuItem value="Paraíba">Paraíba</MenuItem>
-              <MenuItem value="Paraná">Paraná</MenuItem>
-              <MenuItem value="Pernambuco">Pernambuco</MenuItem>
-              <MenuItem value="Piauí">Piauí</MenuItem>
-              <MenuItem value="Rio de Janeiro">Rio de Janeiro</MenuItem>
-              <MenuItem value="Rio Grande do Norte">
-                Rio Grande do Norte
-              </MenuItem>
-              <MenuItem value="Rio Grande do Sul">Rio Grande do Sul</MenuItem>
-              <MenuItem value="Rondônia">Rondônia</MenuItem>
-              <MenuItem value="Roraima">Roraima</MenuItem>
-              <MenuItem value="Santa Catarina">Santa Catarina</MenuItem>
-              <MenuItem value="São Paulo">São Paulo</MenuItem>
-              <MenuItem value="Sergipe">Sergipe</MenuItem>
-              <MenuItem value="Tocantins">Tocantins</MenuItem>
+              <MenuItem value="AC">Acre</MenuItem>
+              <MenuItem value="AL">Alagoas</MenuItem>
+              <MenuItem value="AP">Amapá</MenuItem>
+              <MenuItem value="AM">Amazonas</MenuItem>
+              <MenuItem value="BA">Bahia</MenuItem>
+              <MenuItem value="CE">Ceará</MenuItem>
+              <MenuItem value="DF">Distrito Federal </MenuItem>
+              <MenuItem value="ES">Espírito Santo</MenuItem>
+              <MenuItem value="GO">Goiás</MenuItem>
+              <MenuItem value="MA">Maranhão</MenuItem>
+              <MenuItem value="MT">Mato Grosso</MenuItem>
+              <MenuItem value="MS">Mato Grosso do sul</MenuItem>
+              <MenuItem value="MG">Minas Gerais</MenuItem>
+              <MenuItem value="PA">Pará</MenuItem>
+              <MenuItem value="PB">Paraíba</MenuItem>
+              <MenuItem value="PR">Paraná</MenuItem>
+              <MenuItem value="PE">Pernambuco</MenuItem>
+              <MenuItem value="PI">Piauí</MenuItem>
+              <MenuItem value="RJ">Rio de Janeiro</MenuItem>
+              <MenuItem value="RN">Rio Grande do Norte</MenuItem>
+              <MenuItem value="RS">Rio Grande do Sul</MenuItem>
+              <MenuItem value="RO">Rondônia</MenuItem>
+              <MenuItem value="RR">Roraima</MenuItem>
+              <MenuItem value="SC">Santa Catarina</MenuItem>
+              <MenuItem value="SP">São Paulo</MenuItem>
+              <MenuItem value="SE">Sergipe</MenuItem>
+              <MenuItem value="TO">Tocantins</MenuItem>
             </Select>
           </StyledFormControl>
 

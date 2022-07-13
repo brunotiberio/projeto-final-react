@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import { NewsContext } from "../../contexts/NewsContext";
 import { useContext, useEffect } from "react";
 
@@ -14,8 +13,8 @@ function ContentCreator({ name, avatar, city, state, id }) {
   const filtrados = allNews?.filter((news) => news?.authorId === id);
 
   return (
-    <div className="teste--deletarr">
-      <img src={avatar} alt="" />
+    <div>
+      <img className="teste--deletarr" src={avatar} alt="" />
       <p>{name}</p>
       {city ? (
         <p>
@@ -25,9 +24,6 @@ function ContentCreator({ name, avatar, city, state, id }) {
         <p>Não Informado</p>
       )}
       <p>{filtrados?.length}</p>
-      <Button variant="contained" size="small" type="submit">
-        Postagens
-      </Button>
     </div>
   );
 }
