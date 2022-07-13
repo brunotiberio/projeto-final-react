@@ -3,10 +3,14 @@ import React, { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router";
 import {
+  StyledAdressInfoP,
+  StyledAdressP,
   StyledButtomsContainer,
-  StyledContactsContainer,
+  StyledEmailPhoneContainer,
   StyledH3Container,
   StyledImgNameContainer,
+  StyledMoreInformationContainer,
+  StyledNoInfoP,
   StyledProfileJournalistContainer,
 } from "./style";
 import "./style.css";
@@ -43,44 +47,43 @@ function CardJournalist() {
             <p>Adicione um Avatar</p>
           </div>
         )}
-
         <div>
           <h2>{user?.name}</h2>
           <h3>{user?.type}</h3>
         </div>
       </StyledImgNameContainer>
-      <div>
+      <StyledEmailPhoneContainer>
         <h2>Contatos</h2>
         <StyledH3Container>
-          <h3>Email</h3>
+          <h3>Email:</h3>
           <p>{user?.email}</p>
         </StyledH3Container>
         <StyledH3Container>
-          <h3>Telefone</h3>
+          <h3>Telefone: </h3>
           <p>{user?.data?.phone}</p>
         </StyledH3Container>
-      </div>
-      <div>
-        <StyledContactsContainer>
+      </StyledEmailPhoneContainer>
+      <StyledMoreInformationContainer>
+        <div>
           <h2>Demais informações</h2>
           <div>
             {user?.data ? (
               <>
-                <p>Endereço</p>
-                <p>
+                <StyledAdressP>Endereço: </StyledAdressP>
+                <StyledAdressInfoP>
                   {user?.data?.adress.street}, {user?.data?.adress.district},
                   {user?.data?.adress.cep}, {user?.data?.adress.city} -
                   {user?.data?.adress.state}
-                </p>
+                </StyledAdressInfoP>                
               </>
             ) : (
-              <p>
+              <StyledNoInfoP>
                 Acesse á pagina de edição de perfil para completar seu cadastro.
-              </p>
-            )}
+              </StyledNoInfoP>              
+            )}            
           </div>
-        </StyledContactsContainer>
-      </div>
+        </div>
+      </StyledMoreInformationContainer>
       <StyledButtomsContainer>
         <Button variant="contained" size="small" onClick={editProfile}>
           Editar Perfil
