@@ -5,9 +5,12 @@ import {
   StyledSaveChanges,
   StyledTitleAdress,
   StyledFormControl,
+  StyledUrlPhoneContainer,
+  StyledTitleData,
+  StyledTextField,
+  StyledCepStateContainer,
 } from "./style";
 
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 import { useForm, useInput, useSelect } from "lx-react-form";
@@ -66,78 +69,103 @@ function CreatorCompanyEdit({ type }) {
   return (
     <StyledUserCard>
       <form onSubmit={form.handleSubmit}>
+        <StyledTitleData>Dados Pessoais</StyledTitleData>
         <StyledUserTop>
-          <TextField
+
+        <StyledTextField
+            {...name.inputProps}
+            label="Alterar Nome"
+            placeholder={'Digite seu nome'}
+            variant="standard"
+          />
+
+          <StyledUrlPhoneContainer>
+
+          <StyledTextField
+            {...phone.inputProps}
+            label="Alterar telefone"
+            placeholder="(00) 0 00000-0000"
+            variant="standard"
+          />
+
+          <StyledTextField
             {...avatar.inputProps}
             label="Imagem do perfil (url)"
             placeholder="URL da imagem"
             variant="standard"
           />
 
-          <TextField
-            {...name.inputProps}
-            label="Alterar Nome"
-            placeholder={"nome " + type}
-            variant="standard"
-          />
-          <TextField
-            {...phone.inputProps}
-            label="Alterar telefone"
-            placeholder="(55) 0 00000-0000"
-            variant="standard"
-          />
+          </StyledUrlPhoneContainer>
+
+
         </StyledUserTop>
         <StyledTitleAdress>Endereço</StyledTitleAdress>
         <StyledUserOptions>
-          <TextField {...cep.inputProps} label="CEP" variant="standard" />
+        <StyledCepStateContainer>
+          <StyledTextField 
+            {...cep.inputProps} 
+            label="CEP" 
+            variant="standard" />
 
-          <StyledFormControl style={{ width: "100%", marginTop: 20 }}>
-            <InputLabel>Estado</InputLabel>
-            <Select {...state.inputProps} label="Categoria" variant="standard">
-              <MenuItem value="AC">Acre</MenuItem>
-              <MenuItem value="AL">Alagoas</MenuItem>
-              <MenuItem value="AP">Amapá</MenuItem>
-              <MenuItem value="AM">Amazonas</MenuItem>
-              <MenuItem value="BA">Bahia</MenuItem>
-              <MenuItem value="CE">Ceará</MenuItem>
-              <MenuItem value="DF">Distrito Federal </MenuItem>
-              <MenuItem value="ES">Espírito Santo</MenuItem>
-              <MenuItem value="GO">Goiás</MenuItem>
-              <MenuItem value="MA">Maranhão</MenuItem>
-              <MenuItem value="MT">Mato Grosso</MenuItem>
-              <MenuItem value="MS">Mato Grosso do sul</MenuItem>
-              <MenuItem value="MG">Minas Gerais</MenuItem>
-              <MenuItem value="PA">Pará</MenuItem>
-              <MenuItem value="PB">Paraíba</MenuItem>
-              <MenuItem value="PR">Paraná</MenuItem>
-              <MenuItem value="PE">Pernambuco</MenuItem>
-              <MenuItem value="PI">Piauí</MenuItem>
-              <MenuItem value="RJ">Rio de Janeiro</MenuItem>
-              <MenuItem value="RN">Rio Grande do Norte</MenuItem>
-              <MenuItem value="RS">Rio Grande do Sul</MenuItem>
-              <MenuItem value="RO">Rondônia</MenuItem>
-              <MenuItem value="RR">Roraima</MenuItem>
-              <MenuItem value="SC">Santa Catarina</MenuItem>
-              <MenuItem value="SP">São Paulo</MenuItem>
-              <MenuItem value="SE">Sergipe</MenuItem>
-              <MenuItem value="TO">Tocantins</MenuItem>
-            </Select>
-          </StyledFormControl>
+            <StyledFormControl>
+              <InputLabel>Estado</InputLabel>
+              <Select {...state.inputProps} label="Categoria" variant="standard">
+                <MenuItem value="AC">Acre</MenuItem>
+                <MenuItem value="AL">Alagoas</MenuItem>
+                <MenuItem value="AP">Amapá</MenuItem>
+                <MenuItem value="AM">Amazonas</MenuItem>
+                <MenuItem value="BA">Bahia</MenuItem>
+                <MenuItem value="CE">Ceará</MenuItem>
+                <MenuItem value="DF">Distrito Federal </MenuItem>
+                <MenuItem value="ES">Espírito Santo</MenuItem>
+                <MenuItem value="GO">Goiás</MenuItem>
+                <MenuItem value="MA">Maranhão</MenuItem>
+                <MenuItem value="MT">Mato Grosso</MenuItem>
+                <MenuItem value="MS">Mato Grosso do sul</MenuItem>
+                <MenuItem value="MG">Minas Gerais</MenuItem>
+                <MenuItem value="PA">Pará</MenuItem>
+                <MenuItem value="PB">Paraíba</MenuItem>
+                <MenuItem value="PR">Paraná</MenuItem>
+                <MenuItem value="PE">Pernambuco</MenuItem>
+                <MenuItem value="PI">Piauí</MenuItem>
+                <MenuItem value="RJ">Rio de Janeiro</MenuItem>
+                <MenuItem value="RN">Rio Grande do Norte</MenuItem>
+                <MenuItem value="RS">Rio Grande do Sul</MenuItem>
+                <MenuItem value="RO">Rondônia</MenuItem>
+                <MenuItem value="RR">Roraima</MenuItem>
+                <MenuItem value="SC">Santa Catarina</MenuItem>
+                <MenuItem value="SP">São Paulo</MenuItem>
+                <MenuItem value="SE">Sergipe</MenuItem>
+                <MenuItem value="TO">Tocantins</MenuItem>
+              </Select>
+            </StyledFormControl>
+        </StyledCepStateContainer>
+         
 
-          <TextField
+          <StyledTextField 
+          {...street.inputProps} 
+          label="Rua, Nº e Complemento" 
+          variant="standard" 
+          />
+
+          <StyledTextField
             {...district.inputProps}
             label="Bairro"
             variant="standard"
           />
-          <TextField {...city.inputProps} label="Cidade" variant="standard" />
-          <TextField {...street.inputProps} label="Rua" variant="standard" />
-          <TextField {...number.inputProps} label="Número" variant="standard" />
+          
+          <StyledTextField 
+          {...city.inputProps} 
+          label="Cidade" 
+          variant="standard" 
+          />
+          
         </StyledUserOptions>
         {success && (
           <p>As alterações foram salvas, em breve você será direcionado</p>
         )}
         <StyledSaveChanges>
-          <Button sx={{ width: 250 }} variant="contained" type="submit">
+          <Button variant="contained" type="submit">
             Salvar Alterações
           </Button>
         </StyledSaveChanges>
