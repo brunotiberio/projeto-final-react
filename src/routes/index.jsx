@@ -33,6 +33,7 @@ function Paths() {
       />
       <Route exact path={"/mynews/create"} element={<CreateNewsPage />} />
       <Route exact path={"/content-creators"} element={<AllJournalists />} />
+      
     </Routes>
   );
 }
