@@ -23,23 +23,26 @@ function CardJournalist() {
     navigate("/profile/edit");
   }
 
-  if (user?.type === "content creator") {
-    user.type = "Criador de Conteúdo";
-  }
+  // if (user?.type === "content creator") {
+  //   user.type = "Criador de Conteúdo";
+  // }
 
-  if (user?.type === "company") {
-    user.type = "Empresa Parceira";
-  }
+  // if (user?.type === "company") {
+  //   user.type = "Empresa Parceira";
+  // }
 
-  if (user?.type === "reader") {
-    user.type = "Leitor";
-  }
+  // if (user?.type === "reader") {
+  //   user.type = "Leitor";
+  // }
+
+
 
   return (
     <StyledProfileJournalistContainer>
       <StyledImgNameContainer>
         {user?.avatar ? (
           <figure>
+            
             <img src={user?.avatar} alt={user?.name} />
           </figure>
         ) : (
@@ -49,7 +52,9 @@ function CardJournalist() {
         )}
         <div>
           <h2>{user?.name}</h2>
-          <h3>{user?.type}</h3>
+          <h3>{
+              user?.type === "content creator" && "Criador"
+            }</h3>
         </div>
       </StyledImgNameContainer>
       <StyledEmailPhoneContainer>

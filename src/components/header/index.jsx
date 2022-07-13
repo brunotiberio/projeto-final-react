@@ -62,6 +62,7 @@ export const Header = () => {
 
   return (
     <StyledHeader>
+      <button onClick={()=>console.log(user)}>CLqiue</button>
       {mQuery && !mQuery.matches ? (
         <>
           <MenuDrawer logOut={logOut} createNews={createNews} contentCreators={contentCreators} profile={profile} />
