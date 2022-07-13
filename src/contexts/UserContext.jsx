@@ -30,10 +30,8 @@ export const UserProvider = ({ children }) => {
         localStorage.removeItem("@KNN-TOKEN");
       }
     }
-    if(!user){
       logado();
-    }
-  }, [user]);
+  }, []);
 
   async function userLogin(formData, setError) {
     try {

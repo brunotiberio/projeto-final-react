@@ -15,34 +15,18 @@ export default function BasicMenu({
   logOut,
 }) {
   const { user } = useContext(UserContext);
-  const [anchorCreator, setAnchorCreator] = React.useState(null);
-  const [anchorCompany, setAnchorCompany] = React.useState(null);
-  const [anchorReader, setAnchorReader] = React.useState(null);
-  const open = Boolean(anchorCreator);
-  const openCompany = Boolean(anchorCompany);
-  const openReader = Boolean(anchorReader);
-
-  const handleClickCreator = (event) => {
-    setAnchorCreator(event.currentTarget);
+  const [anchorEl, setAnchor] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchor(event.currentTarget);
   };
-  const handleCloseCreator = () => {
-    setAnchorCreator(null);
-  };
-  const handleClickCompany = (event) => {
-    setAnchorCompany(event.currentTarget);
-  };
-  const handleCloseCompany = () => {
-    setAnchorCompany(null);
-  };
-  const handleClickReader = (event) => {
-    setAnchorReader(event.currentTarget);
-  };
-  const handleCloseReader = () => {
-    setAnchorReader(null);
+  const handleClose = () => {
+    setAnchor(null);
   };
 
   return (
-    <div>
+    user ? (
+      <div>
       {user?.type === "content creator" && (
         <StyledAvatarContainer>
           <Button
@@ -55,9 +39,9 @@ export default function BasicMenu({
           </Button>
           <Menu
             id="basic-menu"
-            anchorEl={anchorCreator}
+            anchorEl={anchorEl}
             open={open}
-            onClose={handleCloseCreator}
+            onClose={handleClose}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
@@ -69,7 +53,7 @@ export default function BasicMenu({
           <Avatar
             alt="foto de perfil"
             src={user.avatar}
-            onClick={handleClickCreator}
+            onClick={handleClick}
           />
         </StyledAvatarContainer>
       )}
@@ -86,9 +70,9 @@ export default function BasicMenu({
           </Button>
           <Menu
             id="basic-menu"
-            anchorEl={anchorCompany}
-            open={openCompany}
-            onClose={handleCloseCompany}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
@@ -99,7 +83,7 @@ export default function BasicMenu({
           <Avatar
             alt="foto de perfil"
             src={user.avatar}
-            onClick={handleClickCompany}
+            onClick={handleClick}
           />
         </StyledAvatarContainer>
       )}
@@ -108,9 +92,9 @@ export default function BasicMenu({
         <StyledAvatarContainer>
           <Menu
             id="basic-menu"
-            anchorEl={anchorReader}
-            open={openReader}
-            onClose={handleCloseReader}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
@@ -121,10 +105,32 @@ export default function BasicMenu({
           <Avatar
             alt="foto de perfil"
             src={user.avatar}
-            onClick={handleClickReader}
+            onClick={handleClick}
           />
         </StyledAvatarContainer>
       )}
     </div>
+    ):
+    (
+      <StyledAvatarContainer>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={profile}>Profile</MenuItem>
+            <MenuItem onClick={logOut}>logOut</MenuItem>
+          </Menu>
+          <Avatar
+            alt="foto de perfil"
+            src={user.avatar}
+            onClick={handleClick}
+          />
+        </StyledAvatarContainer>
+    )
   );
 }
