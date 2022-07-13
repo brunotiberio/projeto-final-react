@@ -12,7 +12,8 @@ export const NewsProvider = ({ children }) => {
   const [comments, setComments] = useState();
   const [filter, setFilter] = useState();
   const [filteredNews, setFilteredNews] = useState();
-
+  const [select, setSelect] = useState(false);
+  const [aut, setAut] = useState(false);
   const { user } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -216,6 +217,10 @@ export const NewsProvider = ({ children }) => {
         filteredNews,
         setFilteredNews,
         deleteComment,
+        setSelect,
+        setAut,
+        aut,
+        select
       }}
     >
       {children}

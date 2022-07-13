@@ -8,14 +8,12 @@ import { CardNewsOverview } from "../../components/cardNewOverview";
 import Button from "@mui/material/Button";
 
 import "./index.css";
+import { Creators } from "./style";
 
 function AllJournalists() {
   const { getAllUsers, allUsers } = useContext(UserContext);
 
-  const { allNews, getAllNews, article } = useContext(NewsContext);
-
-  const [select, setSelect] = useState(false);
-  const [aut, setAut] = useState(false);
+  const { allNews, getAllNews, article, setSelect, setAut, aut, select } = useContext(NewsContext);
 
   const filtrados = allNews?.filter((news) => news?.authorId === select);
 
@@ -28,7 +26,7 @@ function AllJournalists() {
     return (
       <div>
         <h2>Criadores de Conteúdo</h2>
-        <div className="apenas-teste">
+        <Creators >
           {allUsers?.map((user) => {
             if (user.type === "content creator") {
               return (
@@ -42,21 +40,11 @@ function AllJournalists() {
                     state={user.data?.adress.state}
                     id={user.id}
                   />
-                  <Button
-                    variant="contained"
-                    size="small"
-                    onClick={() => {
-                      setSelect(user.id);
-                      setAut(user.name);
-                    }}
-                  >
-                    Teste
-                  </Button>
                 </div>
               );
             }
           })}
-        </div>
+        </Creators>
       </div>
     );
   }
