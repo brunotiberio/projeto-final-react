@@ -26,7 +26,6 @@ function CardJournalist() {
       <StyledImgNameContainer>
         {user?.avatar ? (
           <figure>
-            
             <img src={user?.avatar} alt={user?.name} />
           </figure>
         ) : (
@@ -36,9 +35,13 @@ function CardJournalist() {
         )}
         <div>
           <h2>{user?.name}</h2>
-          <h3>{
-              user?.type === "content creator" && "Criador"
-            }</h3>
+          <h3>
+            {user?.type === "content creator"
+              ? "Criador de Conteúdo"
+              : user?.type === "company"
+              ? "Empresa Parceira"
+              : user?.type === "reader" && "Leitor"}
+          </h3>
         </div>
       </StyledImgNameContainer>
       <StyledEmailPhoneContainer>
@@ -63,13 +66,13 @@ function CardJournalist() {
                   {user?.data?.adress.street}, {user?.data?.adress.district},
                   {user?.data?.adress.cep}, {user?.data?.adress.city} -
                   {user?.data?.adress.state}
-                </StyledAdressInfoP>                
+                </StyledAdressInfoP>
               </>
             ) : (
               <StyledNoInfoP>
                 Acesse á pagina de edição de perfil para completar seu cadastro.
-              </StyledNoInfoP>              
-            )}            
+              </StyledNoInfoP>
+            )}
           </div>
         </div>
       </StyledMoreInformationContainer>
