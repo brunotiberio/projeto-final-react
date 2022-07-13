@@ -1,11 +1,10 @@
 import { NewsContext } from "../../contexts/NewsContext";
-import { useContext, useEffect } from "react";
-
-import "./styles.css";
-
+import { useContext, useEffect, useState } from "react";
+import teste from "../../assets/teste.svg";
+import { ContainerCreator } from "./style";
+import { Button } from "@mui/material";
 function ContentCreator({ name, avatar, city, state, email, phone, id }) {
-  const { allNews, getAllNews, article } = useContext(NewsContext);
-
+  const { allNews, getAllNews, article, setSelect, setAut, aut, select } = useContext(NewsContext);
   useEffect(() => {
     getAllNews();
   }, [article]);
@@ -13,20 +12,41 @@ function ContentCreator({ name, avatar, city, state, email, phone, id }) {
   const filtrados = allNews?.filter((news) => news?.authorId === id);
 
   return (
-    <div>
-      <img className="teste--deletarr" src={avatar} alt="" />
-      <p>{name}</p>
-      {city ? (
-        <p>
-          {city}/{state}
-        </p>
+    <ContainerCreator>
+      <div className="info">
+      {avatar ? (
+        <img src={avatar} alt="" />
       ) : (
-        <p>Não Informado</p>
+        <img
+          src={
+            "https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg"
+          }
+          alt="sem imagem"
+        />
       )}
-      <p>{email}</p>
-      <p>{phone}</p>
-      <p>Postagens: {filtrados?.length}</p>
-    </div>
+        <p>{name}</p>
+        {city ? (
+          <p>
+            {city}/{state}
+          </p>
+        ) : (
+          <p>Não Informado</p>
+        )}
+        <p>{email}</p>
+        <p>{phone}</p>
+        <p>Postagens: {filtrados?.length}</p>
+      </div>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => {
+            setSelect(id);
+            setAut(name);
+          }}
+        >
+          Ver Noticias
+        </Button>
+    </ContainerCreator>
   );
 }
 
