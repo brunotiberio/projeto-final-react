@@ -77,7 +77,7 @@ export const UserProvider = ({ children }) => {
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
-        navigate("/profile");
+        navigate("/");
       }, 3000);
     } catch (error) {
       console.log(error);

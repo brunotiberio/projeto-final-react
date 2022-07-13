@@ -4,7 +4,6 @@ import {
   ContentImg,
   ContentInfo,
   ContentUser,
-  StyledImgDescription,
 } from "./style";
 import {useNavigate } from "react-router-dom";
 import { useContext } from "react";

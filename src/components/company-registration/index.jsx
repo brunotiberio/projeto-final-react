@@ -9,6 +9,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Container } from "../../style/index.js";
 import { Anchor, AnchroContainer, Form, Title } from "../login/style.js";
+import { SuccessMessage } from "./style";
 
 function CompanyRegistration() {
   const { userCreate } = useContext(UserContext);
@@ -141,10 +142,12 @@ function CompanyRegistration() {
 				</FormControl>
 				{error && <p>{error}</p>}
 				{success && (
+					<SuccessMessage>
 					<p>
 						Cadastro efetuado com sucesso, em breve você será
 						direcionado
 					</p>
+					</SuccessMessage>
 				)}
 				<Button variant="contained" size="small" type="submit">
 					Cadastrar
