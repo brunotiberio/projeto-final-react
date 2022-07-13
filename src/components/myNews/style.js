@@ -2,14 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  flex-direction: column-reverse;
 
   margin-top: 10px;
 
   border-radius: 10px;
 
   width: 90%;
-  height: 95%;
+  max-width: 800px;
+  min-height: 95vh;
+  height: auto;
 
   background-color: #281e1e;
 `;
