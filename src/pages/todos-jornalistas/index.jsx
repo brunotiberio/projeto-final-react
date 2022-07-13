@@ -35,6 +35,8 @@ function AllJournalists() {
                 <div key={user.id}>
                   <ContentCreator
                     name={user.name}
+                    email={user.email}
+                    phone={user.data?.phone}
                     avatar={user.avatar}
                     city={user.data?.adress.city}
                     state={user.data?.adress.state}
