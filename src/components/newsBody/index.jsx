@@ -25,7 +25,8 @@ import { DeleteModal } from "../deleteModal";
 
 export function NewsBody({ article }) {
   const [value, setValue] = React.useState(2);
-  const [id, setId] = React.useState()
+  const [id, setId] = React.useState();
+  const [authorId, setAuthorId] = React.useState();
 
   const navigate = useNavigate();
 
@@ -37,9 +38,11 @@ export function NewsBody({ article }) {
     if (article) {
       getComments(article.id);
       setId(article.id)
+      setAuthorId(article)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
+
 
   return (
     <>
@@ -193,7 +196,7 @@ export function NewsBody({ article }) {
           <Container>
             {comments &&
               comments.map((comment) => (
-                <CardComments comment={comment} key={comment.id} />
+                <CardComments comment={comment} key={comment.id} authorId={authorId?.authorId} articleId={id} />
               ))}
           </Container>
         </StyledArticle>
