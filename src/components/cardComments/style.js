@@ -23,6 +23,12 @@ export const CommentCard = styled.li`
 
     width: 95%;
     height: 10rem;
+
+    button{
+        display: flex;
+        width: 5rem;
+        margin-left: 80%;
+    }
 `
 
 export const UserInfo = styled.div`
@@ -48,13 +54,13 @@ export const Content = styled.div`
 
     font-size: 15px;
 
-
     width: 100%;
-    height: 70%;
+    min-height: 40%;
+    height: auto;
 
     overflow-y: auto;
 
     margin-top: 10px;
 
-    color: black;
+    color: black;  
 `

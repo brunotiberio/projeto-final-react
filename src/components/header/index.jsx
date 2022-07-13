@@ -1,22 +1,13 @@
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
-import { Button, FormControl } from "@mui/material";
+import { Button} from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router";
-
 import React, { useEffect, useState } from "react";
-
 import { NavButtons } from "../navbar";
 import { StyledHeader } from "./style";
 import MenuDrawer from "../MenuDrawer";
-
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import BasicMenu from "../userLogedMenu";
-import SearchDrawer from "../searchDrawer";
-
 import logo_knn from "../../assets/logo_knn.png";
 
 import { StyledHeaderButtons } from "./style";
