@@ -38,6 +38,7 @@ export const NewsProvider = ({ children }) => {
   }
 
   async function getComments(id) {
+    
     try {
       const response = await api.get(`/articles/${id}?_embed=comments`);
 
@@ -64,13 +65,14 @@ export const NewsProvider = ({ children }) => {
       await api.post(`/comments`, resp, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
       getComments(article?.id);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function deleteComment(id, setSuccess, articleId) {
+  async function deleteComment(id, setSuccess) {
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
@@ -80,10 +82,8 @@ export const NewsProvider = ({ children }) => {
 
       setSuccess(true);
 
-      setTimeout(() => {
-        setSuccess(false);
-        getComments(article?.id);
-      }, 1000);
+      getComments(article?.id, setSuccess);
+      
     } catch (error) {
       console.log(error);
     }
