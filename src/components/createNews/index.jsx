@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm, useSelect, useInput } from "lx-react-form";
 
 import { Button, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 
-import { FormContainer, InputsContainer, StyledFormControl, StyledInput } from './style'
+import { FormContainer, InputsContainer, StyledFormControl, StyledInput, SuccessMessage } from './style'
+import { NewsContext } from '../../contexts/NewsContext';
+import { UserContext } from '../../contexts/UserContext';
 
 export default function CreateNews() {
+
+    const {createArticle} = useContext(NewsContext)
+    const {user} = useContext(UserContext) 
+
+    const [success, setSuccess] =useState(false) 
 
 
     const title = useInput({
@@ -32,7 +39,7 @@ export default function CreateNews() {
         clearFields: true,
         formFields: [title, category, urlToImage, description, content],
         submitCallback: (formData) => {
-            console.log(formData)
+            createArticle(formData, user, setSuccess)
         }
     })
 
@@ -56,11 +63,11 @@ export default function CreateNews() {
                 <StyledFormControl style={{width: '100%', marginTop: 20}}>
                     <InputLabel>Categoria</InputLabel>
                     <Select {...category.inputProps} label="Categoria" >
-                        <MenuItem value="Saúde">Saúde</MenuItem>
-                        <MenuItem value="Tecnologia">Tecnologia</MenuItem>
-                        <MenuItem value="Esporte">Esporte</MenuItem>
-                        <MenuItem value="Entretenimento">Entretenimento</MenuItem>
-                        <MenuItem value="Gastronomia">Gastronomia</MenuItem>
+                        <MenuItem value="saúde">Saúde</MenuItem>
+                        <MenuItem value="tecnologia">Tecnologia</MenuItem>
+                        <MenuItem value="esporte">Esporte</MenuItem>
+                        <MenuItem value="entretenimento">Entretenimento</MenuItem>
+                        <MenuItem value="gastronomia">Gastronomia</MenuItem>
                     </Select>
                 
                 </StyledFormControl>
@@ -102,6 +109,15 @@ export default function CreateNews() {
 
             <Button variant="contained" type="submit" style={{width: '95%', marginTop: 20, marginBottom: 20}}> Criar notícia </Button>
         </form>
+        
+        {
+            success? (
+                <SuccessMessage> Notícia criada com sucesso</SuccessMessage>
+            ) : (
+                null
+            )
+        }
+
     </FormContainer>
     </>
   )

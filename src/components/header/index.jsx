@@ -1,18 +1,48 @@
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
-import { Button, FormControl } from "@mui/material";
+import { Button} from "@mui/material";
 import { Box } from "@mui/system";
-
+import { useNavigate } from "react-router";
 import React, { useEffect, useState } from "react";
-
 import { NavButtons } from "../navbar";
 import { StyledHeader } from "./style";
-import TemporaryDrawer from "../drawer";
-import SearchDrawer from "../searchDrawer";
+import MenuDrawer from "../MenuDrawer";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import BasicMenu from "../userLogedMenu";
+import logo_knn from "../../assets/logo_knn.png";
 
+import { StyledHeaderButtons } from "./style";
 export const Header = () => {
+
+  const { user, setUser  } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  function login() {
+    navigate("/login");
+  }
+  function logOut() {
+    navigate("/login");
+    setUser(null)
+    localStorage.removeItem("@KNN-TOKEN");
+    localStorage.removeItem("@KNN-ID");
+  }
+  function register() {
+    navigate("/register");
+  }
+  function home() {
+    navigate("/");
+  }
+  function profile() {
+    navigate("/profile");
+  }
+  function mynews() {
+    navigate("/mynews");
+  }
+  function createNews() {
+    navigate("/mynews/create");
+  }
+  function contentCreators() {
+    navigate("/content-creators");
+  }
   const [mQuery, setMQuery] = useState({
     matches: window.innerWidth > 800 ? true : false,
   });
@@ -25,27 +55,19 @@ export const Header = () => {
     <StyledHeader>
       {mQuery && !mQuery.matches ? (
         <>
-          <TemporaryDrawer />
-          <h1>logo</h1>
-          <SearchDrawer/>
+          <MenuDrawer login={login} register={register} logOut={logOut} createNews={createNews} contentCreators={contentCreators} profile={profile} />
+          <div className="logo--cont" >
+            <img src={logo_knn} alt="Kenzie News Network"/>
+            <h1>Kenzie News Network</h1>
+          </div>
         </>
       ) : (
         <>
-          <h1>Logo</h1>
+          <div className="logo--cont" >
+            <img src={logo_knn} alt="Kenzie News Network" />
+            <h1>Kenzie News Network</h1>
+          </div>
           <NavButtons />
-          <FormControl variant="standard">
-            <InputLabel htmlFor="input-with-icon-adornment">
-              pesquisa
-            </InputLabel>
-            <Input
-              id="input-with-icon-adornment"
-              endAdornment={
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              }
-            />
-          </FormControl>
           <Box
             sx={{
               "& button": {
@@ -53,17 +75,38 @@ export const Header = () => {
                 borderRadius: 8,
                 backgroundColor: "#ffff",
                 color: "black",
-                margin: "15px 8px",
-                width: 100,
+                margin: "0px",
+                width: 200,
               },
             }}
           >
-            <Button variant="contained" size="small">
-              Login
-            </Button>
-            <Button variant="contained" size="small">
-              Cadastro
-            </Button>
+            {user ? (
+              <BasicMenu
+              logOut={logOut}
+              contentCreators={contentCreators}
+              mynews={mynews}
+              createNews={createNews}
+              profile={profile}
+              home={home}
+            />
+            ) : (
+              <StyledHeaderButtons>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={() => login()}
+                >
+                  Login
+                </Button>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={() => register()}
+                >
+                  Cadastro
+                </Button>
+              </StyledHeaderButtons>
+            )}
           </Box>
         </>
       )}

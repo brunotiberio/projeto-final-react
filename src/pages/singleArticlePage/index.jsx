@@ -1,15 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { NewsBody } from "../../components/newsBody";
-
 import { NewsContext } from "../../contexts/NewsContext";
 
 export function SingleArticlePage() {
 
-  const { getOneNewsById, article } = useContext(NewsContext);
-
-  useEffect(() => {
-    getOneNewsById();
-  }, []);
+  const { article } = useContext(NewsContext);
 
   return(
     <>

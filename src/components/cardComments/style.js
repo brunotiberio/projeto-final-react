@@ -6,7 +6,10 @@ export const Container = styled.ul`
     justify-content: center;
     align-items: center;
 
+    overflow-y: auto;
+
     width: 95%;
+    
 
     margin: 10px auto;
 `
@@ -14,12 +17,18 @@ export const Container = styled.ul`
 export const CommentCard = styled.li`
     background-color: #D9D9D9;
 
-    border-radius: 20px;
+    border-radius: 10px;
 
     padding: 1rem;
 
     width: 95%;
-    height: 13rem;
+    height: 10rem;
+
+    button{
+        display: flex;
+        width: 5rem;
+        margin-left: 80%;
+    }
 `
 
 export const UserInfo = styled.div`
@@ -35,18 +44,23 @@ export const UserInfo = styled.div`
     }
 
     h3{
-        font-size: 20px;
+        font-size: 15px;
+        color: black;
     }
 `
 
 export const Content = styled.div`
     display: flex;
 
-    font-size: 25px;
+    font-size: 15px;
 
-
-    width: 95%;
-    height: 60%;
+    width: 100%;
+    min-height: 40%;
+    height: auto;
 
     overflow-y: auto;
+
+    margin-top: 10px;
+
+    color: black;  
 `

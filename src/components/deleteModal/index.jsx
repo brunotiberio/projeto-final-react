@@ -5,9 +5,15 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useContext } from "react";
+import { NewsContext } from "../../contexts/NewsContext";
 
-export function DeleteModal() {
+export function DeleteModal({articleId}) {
+
+  const {deleteArticle} = useContext(NewsContext)
+  
   const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleModal = () => {
     setOpen(!open);
@@ -28,41 +34,67 @@ export function DeleteModal() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle
+        {
+          success ? (
+            <>
+            <DialogTitle
           id="alert-dialog-title"
           sx={{ backgroundColor: "white", color: "black" }}
-        >
-          {"Você quer excluir esta notícia?"}
+          >
+          {"Noticia excluida com sucesso!"}
         </DialogTitle>
         <DialogContent sx={{ backgroundColor: "white" }}>
           <DialogContentText
             id="alert-dialog-description"
             sx={{ color: "black" }}
           >
-            Excluindo esta notícia pessoas irão parar de ver e comentar esta
-            publicação. Assim como empresas também irão parar de ver esta
-            publicação.
+           Noticia excluida com sucesso!
           </DialogContentText>
         </DialogContent>
-        <DialogActions sx={{ backgroundColor: "white" }}>
-          <Button
-            onClick={() => console.log("excluir")}
-            sx={{
-              "&:hover": {
-                background: "red",
-                color: "white",
-              },
-            }}
-          >
-            Excluir
-          </Button>
-          <Button
-            onClick={handleModal}
-            sx={{ "&:hover": { background: "blue", color: "white" } }}
-          >
-            Voltar
-          </Button>
-        </DialogActions>
+          </>
+          )
+           : 
+           (
+            <>
+                <DialogTitle
+              id="alert-dialog-title"
+              sx={{ backgroundColor: "white", color: "black" }}
+            >
+              {"Você quer excluir esta notícia?"}
+            </DialogTitle>
+            <DialogContent sx={{ backgroundColor: "white" }}>
+              <DialogContentText
+                id="alert-dialog-description"
+                sx={{ color: "black" }}
+                >
+                Excluindo esta notícia pessoas irão parar de ver e comentar esta
+                publicação. Assim como empresas também irão parar de ver esta
+                publicação.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions sx={{ backgroundColor: "white" }}>
+              <Button
+                onClick={() =>deleteArticle(articleId, setSuccess)}
+                sx={{
+                  "&:hover": {
+                    background: "red",
+                    color: "white",
+                  },
+                }}
+                >
+                Excluir
+              </Button>
+              <Button
+                onClick={handleModal}
+                sx={{ "&:hover": { background: "blue", color: "white" } }}
+                >
+                Voltar
+              </Button>
+            </DialogActions>
+            </>
+           )
+        }
+        
       </Dialog>
     </div>
   );

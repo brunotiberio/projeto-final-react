@@ -7,32 +7,24 @@ export const Content = styled.div`
 
   gap: 2rem;
 
-  h1 {
+  h2 {
     color: white;
   }
 `;
 
-export const BoxArea = styled.div`
+export const BoxArea = styled.form`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   border-radius: 10px;
+
+  width: 90%;
 
   background-color: white;
 
-  textarea {
-    border-radius: 10px;
-
-    width: 90%;
-    height: 7rem;
-
-    padding: 1rem;
-
-    border: none;
-    outline: none;
-  }
-
   div {
-    display: flex;
-    align-items: flex-end;
+    
 
     button {
       display: flex;
@@ -44,7 +36,8 @@ export const BoxArea = styled.div`
       border: none;
       border-radius: 100%;
 
-      margin-bottom: 5px;
+/*       margin-right: 7px;
+      margin-bottom: 5px; */
 
       width: 20px;
       height: 20px;

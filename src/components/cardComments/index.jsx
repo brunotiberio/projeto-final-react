@@ -1,22 +1,47 @@
-import { CommentCard, Container, Content, UserInfo } from "./style"
+import { useContext } from "react"
+import { UserContext } from "../../contexts/UserContext"
+import { DeleteCommentModal } from "../deleteCommentModal"
+import { CommentCard, Content, UserInfo } from "./style"
 
+export function CardComments({comment, authorId, id}){
 
-export function CardComments({userImg, username, content}){
+    const {user} = useContext(UserContext)
 
     return(
-        <Container>
-            <CommentCard>
+        <>
+        {
+            user?.type === "content creator" && user?.id === authorId ?
+             (
+                <CommentCard>
 
                 <UserInfo>
-                    <img src={userImg} alt={username}/>
-                    <h3>{username}</h3>
+                    <img src={comment.userImg} alt={comment.username}/>
+                    <h3>{comment.username}</h3>
                 </UserInfo>
 
                 <Content>
-                    {content}
+                    {comment.content}
+                </Content>
+                <DeleteCommentModal commentId={comment.id} id={id}/>
+                </CommentCard>
+             )
+              : 
+              (
+                  <CommentCard>
+
+                <UserInfo>
+                    <img src={comment.userImg} alt={comment.username}/>
+                    <h3>{comment.username}</h3>
+                </UserInfo>
+
+                <Content>
+                    {comment.content}
                 </Content>
 
-            </CommentCard>
-        </Container>
+                </CommentCard>
+              )
+        }
+            
+        </>
     )
 }

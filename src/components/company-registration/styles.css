@@ -1,7 +1,13 @@
-.form {
+.teste---remover {
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+}
+
+.forme {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 300px;
-  height: 400px;
+  height: 450px;
 }

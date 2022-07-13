@@ -2,21 +2,46 @@
 import { useContext, useEffect } from "react";
 import { CardNewsOverview } from "../../components/cardNewOverview";
 import { NewsContext } from "../../contexts/NewsContext";
-import { Container } from "./script";
+import { Container, Content } from "./style";
 
 export function Homepage() {
-  const { allNews, getAllNews } = useContext(NewsContext);
+  const {
+    allNews,
+    getAllNews,
+    filter,
+    filteredNews,
+    setFilteredNews,
+  } = useContext(NewsContext);
 
   useEffect(() => {
-    getAllNews();
+    getAllNews()
   }, []);
+
+  useEffect(() => {
+    if (filter!=="todos" && allNews) {
+      setFilteredNews(allNews.filter((article) => article.category === filter));
+    }else{
+      setFilteredNews(false)
+    }
+  }, [filter]);
 
   return (
     <Container>
-      {allNews &&
-        allNews.map((article) => (
-          <CardNewsOverview article={article} key={article.id} />
-        ))}
+      {
+       filteredNews && filteredNews?.length !== 0 ?   
+          filteredNews?.map((article) => (
+            <CardNewsOverview article={article} key={article.id} />
+          ))
+      : filteredNews?.length === 0 ? 
+      <Content>
+           <p>Ainda não possuimos notícias com esta categoria...</p>
+      </Content>
+      :
+      allNews?.map((article) => (
+        <CardNewsOverview article={article} key={article.id} />
+      ))
+          
+      }
     </Container>
   );
 }
