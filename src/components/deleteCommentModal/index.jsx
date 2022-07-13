@@ -8,10 +8,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useContext } from "react";
 import { NewsContext } from "../../contexts/NewsContext";
 
-export function DeleteModal({articleId}) {
+export function DeleteCommentModal({ commentId, id }) {
+  const { deleteComment } = useContext(NewsContext);
 
-  const {deleteArticle} = useContext(NewsContext)
-  
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -34,67 +33,61 @@ export function DeleteModal({articleId}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        {
-          success ? (
-            <>
+        {success ? (
+          <>
             <DialogTitle
-          id="alert-dialog-title"
-          sx={{ backgroundColor: "white", color: "black" }}
-          >
-          {"Noticia excluida com sucesso!"}
-        </DialogTitle>
-        <DialogContent sx={{ backgroundColor: "white" }}>
-          <DialogContentText
-            id="alert-dialog-description"
-            sx={{ color: "black" }}
-          >
-           Noticia excluida com sucesso!
-          </DialogContentText>
-        </DialogContent>
-          </>
-          )
-           : 
-           (
-            <>
-                <DialogTitle
               id="alert-dialog-title"
               sx={{ backgroundColor: "white", color: "black" }}
             >
-              {"Você quer excluir esta notícia?"}
+              {"Comentário excluido com sucesso"}
             </DialogTitle>
             <DialogContent sx={{ backgroundColor: "white" }}>
               <DialogContentText
                 id="alert-dialog-description"
                 sx={{ color: "black" }}
-                >
-                Excluindo esta notícia pessoas irão parar de ver e comentar esta
-                publicação. Assim como empresas também irão parar de ver esta
-                publicação.
+              >
+                Comentário excluido com sucesso!
+              </DialogContentText>
+            </DialogContent>
+          </>
+        ) : (
+          <>
+            <DialogTitle
+              id="alert-dialog-title"
+              sx={{ backgroundColor: "white", color: "black" }}
+            >
+              {"Você quer excluir este comentário?"}
+            </DialogTitle>
+            <DialogContent sx={{ backgroundColor: "white" }}>
+              <DialogContentText
+                id="alert-dialog-description"
+                sx={{ color: "black" }}
+              >
+                Excluindo este comentário pessoas irão parar de ver este
+                comentário.
               </DialogContentText>
             </DialogContent>
             <DialogActions sx={{ backgroundColor: "white" }}>
               <Button
-                onClick={() =>deleteArticle(articleId, setSuccess)}
+                onClick={() => deleteComment(commentId, setSuccess, id)}
                 sx={{
                   "&:hover": {
                     background: "red",
                     color: "white",
                   },
                 }}
-                >
+              >
                 Excluir
               </Button>
               <Button
                 onClick={handleModal}
                 sx={{ "&:hover": { background: "blue", color: "white" } }}
-                >
+              >
                 Voltar
               </Button>
             </DialogActions>
-            </>
-           )
-        }
-        
+          </>
+        )}
       </Dialog>
     </div>
   );

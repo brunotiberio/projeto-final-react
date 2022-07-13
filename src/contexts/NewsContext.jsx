@@ -70,6 +70,27 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
+  async function deleteComment(id, setSuccess,articleId){
+      try {
+        
+        const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
+        
+        await api.delete(`/comments/${id}`,{
+          headers: { Authorization: `Bearer ${token}` },
+        })
+
+        setSuccess(true)
+
+      setTimeout(()=>{
+        setSuccess(false)
+        getComments(article?.id);
+      }, 1000)
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
   async function createArticle(formData, user, setSuccess) {
     const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
 
@@ -189,7 +210,8 @@ export const NewsProvider = ({ children }) => {
         filter,
         setFilter,
         filteredNews, 
-        setFilteredNews
+        setFilteredNews,
+        deleteComment
       }}
     >
       {children}
