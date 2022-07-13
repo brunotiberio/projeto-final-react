@@ -10,6 +10,7 @@ import { SingleArticlePage } from "../pages/singleArticlePage";
 import LoginPage from "../pages/login";
 import CreatorCompanyEditPage from "../pages/creatorCompanyEditPage";
 import AllJournalists from "../pages/todos-jornalistas";
+import { MyNewsPage } from "../pages/myNewsPage";
 
 function Paths() {
   return (
@@ -18,7 +19,7 @@ function Paths() {
       <Route exact path={"/login"} element={<LoginPage />} />
       <Route exact path={"/register"} element={<RegisterPage />} />
       <Route exact path={"/register/person"} element={<PersonRegisterPage />} />
-      <Route exact path={"/mynews/edit"} element={<EditNewsPage />} />
+      <Route exact path={"/mynews/edit/:id"} element={<EditNewsPage />} />
       <Route
         exact
         path={"/register/enterprise"}
@@ -33,7 +34,7 @@ function Paths() {
       />
       <Route exact path={"/mynews/create"} element={<CreateNewsPage />} />
       <Route exact path={"/content-creators"} element={<AllJournalists />} />
-      <Route exact path={"/mynews"} />
+      <Route exact path={"/mynews"} element={<MyNewsPage/>} />
     </Routes>
   );
 }

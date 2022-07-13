@@ -20,8 +20,8 @@ import SearchDrawer from "../searchDrawer";
 import logo_knn from "../../assets/logo_knn.png";
 
 export const Header = () => {
+
   const { user } = useContext(UserContext);
-  //console.log(user)
   const navigate = useNavigate();
 
   function login() {
@@ -32,11 +32,9 @@ export const Header = () => {
     localStorage.removeItem("@KNN-TOKEN");
     localStorage.removeItem("@KNN-ID");
   }
-
   function register() {
     navigate("/register");
   }
-
   function home() {
     navigate("/");
   }
@@ -52,11 +50,9 @@ export const Header = () => {
   function contentCreators() {
     navigate("/content-creators");
   }
-
   const [mQuery, setMQuery] = useState({
     matches: window.innerWidth > 800 ? true : false,
   });
-
   useEffect(() => {
     let mediaQuery = window.matchMedia("(min-width: 800px)");
     mediaQuery.addEventListener("change", () => setMQuery(mediaQuery));
@@ -66,7 +62,7 @@ export const Header = () => {
     <StyledHeader>
       {mQuery && !mQuery.matches ? (
         <>
-          <MenuDrawer profile={profile} />
+          <MenuDrawer logOut={logOut} createNews={createNews} contentCreators={contentCreators} profile={profile} />
           <div className="logo--cont">
             <img src={logo_knn} alt="Kenzie News Network" onClick={home} />
             <h1>Kenzie News Network</h1>
