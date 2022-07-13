@@ -63,11 +63,11 @@ export default function CreateNews() {
                 <StyledFormControl style={{width: '100%', marginTop: 20}}>
                     <InputLabel>Categoria</InputLabel>
                     <Select {...category.inputProps} label="Categoria" >
-                        <MenuItem value="Saúde">Saúde</MenuItem>
-                        <MenuItem value="Tecnologia">Tecnologia</MenuItem>
-                        <MenuItem value="Esporte">Esporte</MenuItem>
-                        <MenuItem value="Entretenimento">Entretenimento</MenuItem>
-                        <MenuItem value="Gastronomia">Gastronomia</MenuItem>
+                        <MenuItem value="saúde">Saúde</MenuItem>
+                        <MenuItem value="tecnologia">Tecnologia</MenuItem>
+                        <MenuItem value="esporte">Esporte</MenuItem>
+                        <MenuItem value="entretenimento">Entretenimento</MenuItem>
+                        <MenuItem value="gastronomia">Gastronomia</MenuItem>
                     </Select>
                 
                 </StyledFormControl>

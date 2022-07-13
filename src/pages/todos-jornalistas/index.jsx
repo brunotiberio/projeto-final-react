@@ -8,7 +8,7 @@ import { CardNewsOverview } from "../../components/cardNewOverview";
 import Button from "@mui/material/Button";
 
 import "./index.css";
-import { Creators } from "./style";
+import { Creators, StyledContainer } from "./style";
 
 function AllJournalists() {
   const { getAllUsers, allUsers } = useContext(UserContext);
@@ -24,7 +24,7 @@ function AllJournalists() {
 
   if (select === false) {
     return (
-      <div>
+      <div className="containerJornalistas">
         <h2>Criadores de Conteúdo</h2>
         <Creators >
           {allUsers?.map((user) => {
@@ -52,7 +52,7 @@ function AllJournalists() {
   if (select) {
     if (filtrados.length > 0) {
       return (
-        <div>
+        <StyledContainer>
           <h3>Publicações de {aut}</h3>
           <Button
             variant="contained"
@@ -65,13 +65,13 @@ function AllJournalists() {
             filtrados.map((article) => (
               <CardNewsOverview article={article} key={article.id} />
             ))}
-        </div>
+        </StyledContainer>
       );
     }
 
     if (filtrados.length === 0) {
       return (
-        <div>
+        <StyledContainer>
           <h3>Publicações de {aut}</h3>
           <Button
             variant="contained"
@@ -81,7 +81,7 @@ function AllJournalists() {
             Voltar
           </Button>
           <p>Este autor ainda não possuí publicações.</p>
-        </div>
+        </StyledContainer>
       );
     }
   }

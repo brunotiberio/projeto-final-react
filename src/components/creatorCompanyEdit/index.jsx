@@ -20,19 +20,23 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 
+
+
 function CreatorCompanyEdit({ type }) {
-  const avatar = useInput({ name: "avatar" });
-  const name = useInput({ name: "name" });
-  const phone = useInput({ name: "phone" });
-  const cep = useInput({ name: "cep" });
-  const state = useSelect({ name: "state" });
-  const district = useInput({ name: "district" });
-  const city = useInput({ name: "city" });
-  const street = useInput({ name: "street" });
 
   const { userEdit, user } = useContext(UserContext);
-
   const [success, setSuccess] = useState(false);
+
+  const avatar = useInput({ name: "avatar", initialValue: user?.avatar});
+  const name = useInput({ name: "name", initialValue: user.name });
+  const phone = useInput({ name: "phone", initialValue: user?.data?.phone });
+  const cep = useInput({ name: "cep", initialValue: user?.data?.adress.cep});
+  const state = useSelect({ name: "state", initialValue: user?.data?.adress.state });
+  const district = useInput({ name: "district", initialValue: user?.data?.adress.district });
+  const city = useInput({ name: "city", initialValue: user?.data?.adress.city });
+  const street = useInput({ name: "street", initialValue: user?.data?.adress.street });
+
+
 
   const form = useForm({
     clearFields: true,

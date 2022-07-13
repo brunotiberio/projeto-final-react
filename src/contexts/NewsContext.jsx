@@ -55,7 +55,7 @@ export const NewsProvider = ({ children }) => {
       articleId: articleId,
       content: body,
       userImg:
-        user.userImg ||
+        user.avatar ||
         "https://thumbs.dreamstime.com/z/imagem-nima-do-perfil-do-homem-34487140.jpg",
       username: user.name,
     };
