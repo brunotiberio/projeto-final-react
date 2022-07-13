@@ -7,11 +7,18 @@ export const NavButtons = () => {
 
   const { filter , setFilter }  = useContext(NewsContext)
   function handleClick(type) {
-    setFilter(type)
+    if(type==="todos"){
+      setFilter("todos")
+    }else{  
+      setFilter(type)
+    }
   }
   return (
     <StyledHeaderList role="presentation">
       <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" onClick={()=>handleClick("todos")}>
+          Todos
+        </Link>
         <Link underline="hover" color="inherit" onClick={()=>handleClick("saúde")}>
           Saúde
         </Link>

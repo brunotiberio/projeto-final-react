@@ -19,8 +19,10 @@ export function Homepage() {
   }, [article]);
 
   useEffect(() => {
-    if (filter && allNews) {
+    if (filter!=="todos" && allNews) {
       setFilteredNews(allNews.filter((article) => article.category === filter));
+    }else{
+      setFilteredNews(null)
     }
   }, [filter]);
   return (
