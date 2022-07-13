@@ -36,8 +36,6 @@ export default function MenuDrawer({ logOut, contentCreators,createNews,profile}
     >
       <List>
         {[
-          "Novas Noticias",
-          "Mais Votadas",
           "Saúde",
           "Tecnologia",
           "Esporte",
