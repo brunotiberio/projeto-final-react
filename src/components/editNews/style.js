@@ -61,7 +61,7 @@ export const SuccessMessage = styled.div`
 
     border-radius: 20px;
 
-    width: 15rem;
+    width: 18rem;
     height:2rem;
 
     margin: 10px auto;

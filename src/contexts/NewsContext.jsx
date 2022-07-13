@@ -130,7 +130,7 @@ export const NewsProvider = ({ children }) => {
 
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
-      await api.patch(`/articles`, body, {
+      await api.patch(`/articles/${id}`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSuccess(true);
