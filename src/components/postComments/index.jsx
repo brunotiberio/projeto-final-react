@@ -29,19 +29,21 @@ export function PostComments() {
 
   return (
     <Content>
-      <h1>Comentários</h1>
+      <h2>Comentários</h2>
 
       <BoxArea onSubmit={form.handleSubmit}>
         <TextField
           type="text"
           multiline
           maxRows={5}
+          minRows={5}
           sx={{
             borderTopLeftRadius: 5,
             borderBottomLeftRadius: 5,
             background: "#ffffff",
-            width: "15rem",
-            height: "100%",
+            width: "100%",
+            height: "30%",
+            border: '1px solid white'
           }}
           {...content.inputProps}
         />

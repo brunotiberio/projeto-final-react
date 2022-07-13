@@ -7,29 +7,24 @@ export const Content = styled.div`
 
   gap: 2rem;
 
-  h1 {
+  h2 {
     color: white;
   }
 `;
 
 export const BoxArea = styled.form`
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   border-radius: 10px;
 
-  width: 60%;
-
-  max-width: 250px;
+  width: 90%;
 
   background-color: white;
 
   div {
-    display: flex;
-    align-items: flex-end;
+    
 
     button {
       display: flex;
@@ -41,8 +36,8 @@ export const BoxArea = styled.form`
       border: none;
       border-radius: 100%;
 
-      margin-right: 7px;
-      margin-bottom: 5px;
+/*       margin-right: 7px;
+      margin-bottom: 5px; */
 
       width: 20px;
       height: 20px;

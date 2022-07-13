@@ -7,6 +7,7 @@ import {
   NewsButtons,
   NewsRatings,
   StyledArticle,
+  StyledContainerStars,
 } from "./style";
 import * as React from "react";
 import Button from "@mui/material/Button";
@@ -53,7 +54,7 @@ export function NewsBody({ article }) {
 
             <figure>
               <img
-                style={{ width: "200px", heigth: "200px" }}
+                style={{ width: "100%", heigth: "100%" }}
                 src={article.urlToImage}
                 alt={article.title}
               />
@@ -86,13 +87,15 @@ export function NewsBody({ article }) {
                 }}
               >
                 <Typography component="legend">Nota</Typography>
-                <Rating
-                  name="simple-controlled"
-                  value={value}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                  }}
-                />
+                <StyledContainerStars>
+                  <Rating
+                    name="simple-controlled"
+                    value={value}
+                    onChange={(event, newValue) => {
+                      setValue(newValue);
+                    }}
+                  />
+                </StyledContainerStars>
               </Box>
 
               <NewsButtons>
