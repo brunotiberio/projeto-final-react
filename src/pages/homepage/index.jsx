@@ -17,7 +17,7 @@ export function Homepage() {
     getAllNews()
   }, []);
 
-  
+  console.log("teste")
 
   useEffect(() => {
     if (filter!=="todos" && allNews) {
