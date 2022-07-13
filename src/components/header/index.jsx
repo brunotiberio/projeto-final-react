@@ -62,36 +62,21 @@ export const Header = () => {
 
   return (
     <StyledHeader>
-      <button onClick={()=>console.log(user)}>CLqiue</button>
       {mQuery && !mQuery.matches ? (
         <>
           <MenuDrawer logOut={logOut} createNews={createNews} contentCreators={contentCreators} profile={profile} />
-          <div className="logo--cont">
+          <div className="logo--cont" >
             <img src={logo_knn} alt="Kenzie News Network"/>
             <h1>Kenzie News Network</h1>
           </div>
-          <SearchDrawer />
         </>
       ) : (
         <>
-          <div className="logo--cont">
+          <div className="logo--cont" >
             <img src={logo_knn} alt="Kenzie News Network" />
             <h1>Kenzie News Network</h1>
           </div>
           <NavButtons />
-          <FormControl variant="standard">
-            <InputLabel htmlFor="input-with-icon-adornment">
-              pesquisa
-            </InputLabel>
-            <Input
-              id="input-with-icon-adornment"
-              endAdornment={
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              }
-            />
-          </FormControl>
           <Box
             sx={{
               "& button": {

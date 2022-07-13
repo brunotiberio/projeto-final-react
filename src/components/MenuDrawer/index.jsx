@@ -10,12 +10,17 @@ import ListItemText from "@mui/material/ListItemText";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { NewsContext } from "../../contexts/NewsContext";
 
 export default function MenuDrawer({ logOut, contentCreators,createNews,profile}) {
   const { user } = useContext(UserContext);
+  const { setFilter }  = useContext(NewsContext)
   const [state, setState] = React.useState({
     left: false,
   });
+  function handleClick(type){
+    setFilter(type)
+  }
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -36,15 +41,15 @@ export default function MenuDrawer({ logOut, contentCreators,createNews,profile}
     >
       <List>
         {[
-          "Saúde",
-          "Tecnologia",
-          "Esporte",
-          "Entretenimento",
-          "Gastronomia",
+          "saúde",
+          "tecnologia",
+          "esporte",
+          "entretenimento",
+          "gastronomia",
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemText primary={text} />
+              <ListItemText primary={text} onClick={()=>handleClick(text)} />
             </ListItemButton>
           </ListItem>
         ))}
