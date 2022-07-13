@@ -18,7 +18,7 @@ export function CardNewsOverview({ article }) {
 
   function resumeDescription(content) {
     if (content.split("").length > 50) {
-      return content.split(" ").splice(0, 20).join(" ") + "...";
+      return content.split(" ").splice(0, 15).join(" ") + "...";
     }
     return content;
   }
