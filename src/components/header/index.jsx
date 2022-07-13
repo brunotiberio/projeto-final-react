@@ -66,7 +66,7 @@ export const Header = () => {
         <>
           <MenuDrawer logOut={logOut} createNews={createNews} contentCreators={contentCreators} profile={profile} />
           <div className="logo--cont">
-            <img src={logo_knn} alt="Kenzie News Network" onClick={home} />
+            <img src={logo_knn} alt="Kenzie News Network"/>
             <h1>Kenzie News Network</h1>
           </div>
           <SearchDrawer />
@@ -74,7 +74,7 @@ export const Header = () => {
       ) : (
         <>
           <div className="logo--cont">
-            <img src={logo_knn} alt="Kenzie News Network" onClick={home} />
+            <img src={logo_knn} alt="Kenzie News Network" />
             <h1>Kenzie News Network</h1>
           </div>
           <NavButtons />

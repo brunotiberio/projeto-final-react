@@ -70,26 +70,24 @@ export const NewsProvider = ({ children }) => {
     }
   }
 
-  async function deleteComment(id, setSuccess,articleId){
-      try {
-        
-        const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
-        
-        await api.delete(`/comments/${id}`,{
-          headers: { Authorization: `Bearer ${token}` },
-        })
+  async function deleteComment(id, setSuccess, articleId) {
+    try {
+      const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-        setSuccess(true)
+      await api.delete(`/comments/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-      setTimeout(()=>{
-        setSuccess(false)
+      setSuccess(true);
+
+      setTimeout(() => {
+        setSuccess(false);
         getComments(article?.id);
-      }, 1000)
-
-      } catch (error) {
-        console.log(error);
-      }
+      }, 1000);
+    } catch (error) {
+      console.log(error);
     }
+  }
 
   async function createArticle(formData, user, setSuccess) {
     const authorId = JSON.parse(localStorage.getItem("@KNN-ID"));
@@ -110,12 +108,12 @@ export const NewsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setSuccess(true)
-      
-      setTimeout(()=>{
-        setSuccess(false)
-        navigate("/")
-      }, 3000)
+      setSuccess(true);
+
+      setTimeout(() => {
+        setSuccess(false);
+        navigate("/");
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -128,40 +126,39 @@ export const NewsProvider = ({ children }) => {
       ...formData,
       authorId: authorId,
     };
-    
+
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
       await api.patch(`/articles`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
-    setSuccess(true)
+      setSuccess(true);
 
-    setTimeout(()=>{
-      setSuccess(false)
-      navigate("/")
-    }, 2000)
+      setTimeout(() => {
+        setSuccess(false);
+        navigate("/");
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function deleteArticle(id, setSuccess){
+  async function deleteArticle(id, setSuccess) {
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-      const response = await api.delete(`/articles/${id}`, {
+      await api.delete(`/articles/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setSuccess(true)
+      setSuccess(true);
 
-      setTimeout(()=>{
-        setSuccess(false)
-        navigate("/")
-      }, 2000)
+      setTimeout(() => {
+        setSuccess(false);
+        navigate("/");
+      }, 2000);
     } catch (error) {
-
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -216,9 +213,9 @@ export const NewsProvider = ({ children }) => {
         deleteArticle,
         filter,
         setFilter,
-        filteredNews, 
+        filteredNews,
         setFilteredNews,
-        deleteComment
+        deleteComment,
       }}
     >
       {children}
