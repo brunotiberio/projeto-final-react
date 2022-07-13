@@ -4,7 +4,8 @@ export const StyledUserCard = styled.div`
     flex-flow: column nowrap;
     width:90%;
     gap:10px;
-    margin: 10px 0px;
+    margin: auto;
+    margin-top: 20px;
     height: 90vh;
 
 
@@ -24,13 +25,12 @@ export const StyledUserTop = styled.div`
 export const StyledUserOptions = styled.div`
     display:flex;
     flex-flow: column nowrap;
-    gap:30px;
-    margin:15px;
-    @media (max-width: 500px){
-        button{
-            width:100%
-        }
-    }
+
+
+    padding: 0 10px;
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
 `
 export const StyledSaveChanges= styled.div`
     display:flex;
@@ -54,4 +54,13 @@ export const SuccessMessage = styled.div`
 
     font-weight: 600;
     font-size: 36;
+`
+
+export const StyledP = styled.p`
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    width: 100%;
 `

@@ -16,4 +16,6 @@ export const SuccessMessage = styled.div`
 
     font-weight: 600;
     font-size: 36;
+
+    padding: 1rem;
 `
