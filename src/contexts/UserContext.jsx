@@ -59,7 +59,7 @@ export const UserProvider = ({ children }) => {
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
-        navigate("/");
+        navigate("/login");
       }, 3000);
     } catch (error) {
       setError(error.response.data);

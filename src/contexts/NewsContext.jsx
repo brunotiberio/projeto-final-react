@@ -61,7 +61,7 @@ export const NewsProvider = ({ children }) => {
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-      const response = await api.post(`/comments`, resp, {
+      await api.post(`/comments`, resp, {
         headers: { Authorization: `Bearer ${token}` },
       });
       getComments(article?.id);
@@ -85,7 +85,7 @@ export const NewsProvider = ({ children }) => {
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-      const response = await api.post(`/articles`, body, {
+      await api.post(`/articles`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -110,8 +110,7 @@ export const NewsProvider = ({ children }) => {
     
     try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
-
-      const response = await api.patch(`/articles/${id}`, body, {
+      await api.patch(`/articles`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
     setSuccess(true)
@@ -146,26 +145,34 @@ export const NewsProvider = ({ children }) => {
   }
 
   async function voteArticle(articleId, articleLikes) {
-    const likes = articleLikes+=1;
-    try { 
+    const likes = (articleLikes += 1);
+    try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-      const response = await api.patch(`/articles/${articleId}`, {likes:likes}, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await api.patch(
+        `/articles/${articleId}`,
+        { likes: likes },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
   }
 
   async function reportArticle(articleId, articleReports) {
-    const reports = articleReports+=1;
-    try { 
+    const reports = (articleReports += 1);
+    try {
       const token = JSON.parse(localStorage.getItem("@KNN-TOKEN"));
 
-      const response = await api.patch(`/articles/${articleId}`, {reports:reports}, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await api.patch(
+        `/articles/${articleId}`,
+        { reports: reports },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
