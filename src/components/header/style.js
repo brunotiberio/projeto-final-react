@@ -42,4 +42,13 @@ export const StyledHeader = styled.div`
 
 export const StyledHeaderList = styled.div`
   margin: 20px 10px;
+  &:hover{
+    cursor:pointer;
+  }
+`;
+export const StyledHeaderButtons = styled.div`
+  displa: flex;
+  flex-flow: row nowrap;
+  margin: 0px 10px;
+  gap: 10px;
 `;

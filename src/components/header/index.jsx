@@ -19,9 +19,10 @@ import SearchDrawer from "../searchDrawer";
 
 import logo_knn from "../../assets/logo_knn.png";
 
+import { StyledHeaderButtons } from "./style";
 export const Header = () => {
 
-  const { user } = useContext(UserContext);
+  const { user, setUser  } = useContext(UserContext);
   const navigate = useNavigate();
 
   function login() {
@@ -29,6 +30,7 @@ export const Header = () => {
   }
   function logOut() {
     navigate("/login");
+    setUser(null)
     localStorage.removeItem("@KNN-TOKEN");
     localStorage.removeItem("@KNN-ID");
   }
@@ -96,13 +98,22 @@ export const Header = () => {
                 borderRadius: 8,
                 backgroundColor: "#ffff",
                 color: "black",
-                margin: "15px 8px",
-                width: 100,
+                margin: "0px",
+                width: 200,
               },
             }}
           >
-            {user === null ? (
-              <>
+            {user ? (
+              <BasicMenu
+              logOut={logOut}
+              contentCreators={contentCreators}
+              mynews={mynews}
+              createNews={createNews}
+              profile={profile}
+              home={home}
+            />
+            ) : (
+              <StyledHeaderButtons>
                 <Button
                   variant="contained"
                   size="small"
@@ -117,17 +128,7 @@ export const Header = () => {
                 >
                   Cadastro
                 </Button>
-              </>
-            ) : (
-              <BasicMenu
-                user={user}
-                logOut={logOut}
-                contentCreators={contentCreators}
-                mynews={mynews}
-                createNews={createNews}
-                profile={profile}
-                home={home}
-              />
+              </StyledHeaderButtons>
             )}
           </Box>
         </>

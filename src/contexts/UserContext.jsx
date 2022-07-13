@@ -31,7 +31,7 @@ export const UserProvider = ({ children }) => {
       }
     }
     logado();
-  }, []);
+  }, [user]);
 
   async function userLogin(formData, setError) {
     try {
@@ -55,7 +55,6 @@ export const UserProvider = ({ children }) => {
   async function userCreate(formData, setError, setSuccess) {
     try {
       await api.post("/register", formData);
-      //console.log(response);
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
@@ -80,7 +79,6 @@ export const UserProvider = ({ children }) => {
         setSuccess(false);
         navigate("/profile");
       }, 3000);
-      //console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +93,6 @@ export const UserProvider = ({ children }) => {
           Authorization: `Bearer ${parsedToken}`,
         },
       });
-      //console.log(response.data);
       setAllUsers(response.data);
     } catch (error) {
       console.log(error);
@@ -103,7 +100,7 @@ export const UserProvider = ({ children }) => {
   }
   return (
     <UserContext.Provider
-      value={{ userLogin, userCreate, userEdit, user, getAllUsers, allUsers }}
+      value={{ userLogin, userCreate, userEdit, user, setUser, getAllUsers, allUsers }}
     >
       {children}
     </UserContext.Provider>
