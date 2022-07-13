@@ -5,7 +5,6 @@ export const StyledMain = styled.main`
   align-items:center;
   margin: 0; 
   min-height:100vh;
-  height:100%; 
-  
+  height:100%;   
   background-color: blueviolet;
 `;
