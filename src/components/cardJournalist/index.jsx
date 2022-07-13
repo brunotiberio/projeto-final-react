@@ -18,25 +18,9 @@ import "./style.css";
 function CardJournalist() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
-
   function editProfile() {
     navigate("/profile/edit");
   }
-
-  // if (user?.type === "content creator") {
-  //   user.type = "Criador de Conteúdo";
-  // }
-
-  // if (user?.type === "company") {
-  //   user.type = "Empresa Parceira";
-  // }
-
-  // if (user?.type === "reader") {
-  //   user.type = "Leitor";
-  // }
-
-
-
   return (
     <StyledProfileJournalistContainer>
       <StyledImgNameContainer>
